@@ -4,7 +4,57 @@
 	<view slot="content">求职</view>
 </cu-custom>
 
-<text>pages/Jobs/jobs.wxml</text>
+<view class="cu-bar search bg-blue">
+	<view class="search-form round">
+		<text class="cuIcon-search"></text>
+		<input :adjust-position="false" type="text" placeholder="搜索公司名或职位"></input>
+	</view>
+</view>
+
+<view class="cu-bar bg-white favorite-margin">
+	<view class="action">
+		<text>收藏</text>
+	</view>
+	<view class="content"></view>
+	<view class="action">
+		<text class="text-grey favorite-padding-right">0</text>
+		<text class="cuIcon-right"></text>
+	</view>
+</view>
+
+<view class="cu-bar bg-white push-title-margin">
+	<view class="action">
+		<text>您可能感兴趣的职位</text>
+	</view>
+	<view class="content"></view>
+	<view class="action">
+		<text class="cuIcon-filter"></text>
+	</view>
+</view>
+
+<view class="cu-card article no-card">
+	<view class="cu-item shadow card-content-no-padding">
+		<view class="content">
+			<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
+				mode="aspectFill" class="push-content-image"></image>
+			<view class="desc push-content-desc">
+				<view>
+					<text class="push-content-title">软件架构师</text>
+					<view class="cu-tag bg-blue light sm round">22 天前</view>
+				</view>
+				<view>
+					<text><text>IBM 中国，沙坪坝，重庆</text></text>
+				</view>
+			</view>
+			<view class="desc flex-apply-button">
+				<view>
+					<text class="text-grey flex-apply-text">申请</text>
+					<text class="cuIcon-right"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
 
 <!-- 底部导航栏 -->
 <view class="cu-bar foot tabber bg-white">
