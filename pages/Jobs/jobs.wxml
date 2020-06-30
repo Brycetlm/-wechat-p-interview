@@ -1,0 +1,23 @@
+<!--pages/Jobs/jobs.wxml-->
+<!-- 顶部导航栏 -->
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+	<view slot="content">求职</view>
+</cu-custom>
+
+<text>pages/Jobs/jobs.wxml</text>
+
+<!-- 底部导航栏 -->
+<view class="cu-bar foot tabber bg-white">
+	<view class="action text-grey" bindtap="bindTapHome">
+		<view class="cuIcon-home"></view> 首页
+	</view>
+	<view class="action text-blue" bindtap="bindTapNews">
+		<view class="cuIcon-newsfill"></view> 求职
+	</view>
+	<view class="action text-grey" bindtap="bindTapFile">
+		<view class="cuIcon-form"></view> 简历
+	</view>
+	<view class="action text-grey" bindtap="bindTapMy">
+		<view class="cuIcon-my"></view> 个人
+	</view>
+</view>

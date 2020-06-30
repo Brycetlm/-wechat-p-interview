@@ -1,4 +1,4 @@
-// pages/main/main.js
+// pages/Jobs/jobs.js
 Page({
 
   /**
@@ -66,12 +66,12 @@ Page({
   //事件处理函数
   bindTapHome: function() {
     // TODO
-    this.onLoad();
+    wx.redirectTo({
+      url: '../main/main',
+    })
   },
   bindTapNews: function() {
-    wx.redirectTo({
-      url: '../Jobs/jobs',
-    })
+    this.onLoad();
   },
   bindTapFile: function() {
     wx.redirectTo({

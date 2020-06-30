@@ -1,4 +1,4 @@
-// pages/main/main.js
+// pages/profile/profile.js
 Page({
 
   /**
@@ -66,7 +66,9 @@ Page({
   //事件处理函数
   bindTapHome: function() {
     // TODO
-    this.onLoad();
+    wx.redirectTo({
+      url: '../main/main',
+    })
   },
   bindTapNews: function() {
     wx.redirectTo({
@@ -74,9 +76,7 @@ Page({
     })
   },
   bindTapFile: function() {
-    wx.redirectTo({
-      url: '../profile/profile',
-    })
+    this.onLoad();
   },
   bindTapMy: function() {
     wx.redirectTo({
