@@ -1,4 +1,7 @@
 /**app.wxss**/
+@import "pages/colorui/icon.wxss";
+@import "pages/colorui/main.wxss";
+
 .container {
   height: 100%;
   display: flex;
