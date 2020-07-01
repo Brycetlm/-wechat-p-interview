@@ -6,7 +6,8 @@
     "pages/Jobs/jobs",
     "pages/my/my",
     "pages/profile/profile",
-    "pages/job-detail/job-detail"
+    "pages/profile/form",
+    "pages/profile/process"
   ],
   "window": {
     "backgroundTextStyle": "light",
