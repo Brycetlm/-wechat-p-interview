@@ -46,9 +46,9 @@
 					<text><text>IBM 中国，沙坪坝，重庆</text></text>
 				</view>
 			</view>
-			<view class="desc flex-apply-button">
+			<view class="desc flex-apply-button" bindtap="detail">
 				<view>
-					<text class="text-grey flex-apply-text">申请</text>
+					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
 				</view>
 			</view>

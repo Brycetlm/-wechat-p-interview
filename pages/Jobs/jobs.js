@@ -63,7 +63,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-  //事件处理函数
+  detail: function() {
+    wx.navigateTo({
+      url: '../job-detail/job-detail',
+    })
+  },
   bindTapHome: function() {
     // TODO
     wx.redirectTo({
