@@ -8,7 +8,7 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    imgList: [],
+    img: '',
     index: null,
     date: '2020-7-11',
     picker: ['初中', '高中', '专科', '本科', '硕士', '博士', '博士后'],
@@ -18,21 +18,36 @@ Page({
   //自定义函数
   ChooseImage() {
     wx.chooseImage({
-      count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
-        if (this.data.imgList.length != 0) {
+        this.setData({
+          img: res.tempFilePaths
+        })
+      }
+    });
+  },
+  ViewImage(e) {
+    wx.previewImage({
+      urls: this.data.imgList,
+      current: e.currentTarget.dataset.url
+    });
+  },
+  DelImg(e) {
+    wx.showModal({
+      title: '亲爱的用户',
+      content: '确定要删除这张头像吗？',
+      cancelText: '等等',
+      confirmText: '确定',
+      success: res => {
+        if (res.confirm) {
+          this.data.imgList.splice(e.currentTarget.dataset.index, 1);
           this.setData({
-            imgList: this.data.imgList.concat(res.tempFilePaths)
-          })
-        } else {
-          this.setData({
-            imgList: res.tempFilePaths
+            imgList: this.data.imgList
           })
         }
       }
-    });
+    })
   },
   DateChange(e) {
     this.setData({
