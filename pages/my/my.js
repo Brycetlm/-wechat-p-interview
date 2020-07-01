@@ -12,9 +12,9 @@ Page({
     text_name: "孙剑桥",
     text_version: "软酷网 | Aondroid/Java",
     text1_1: "个人资料",
-    text1_2: "浏览简历",
+    text1_2: "投递记录",
     text1_3: "收藏",
-    text1_4: "通知",
+    text1_4: "联系我们",
   },
 
   /**
@@ -74,7 +74,9 @@ Page({
   },
   //事件处理函数
   btn1: function() {
-    
+    wx.navigateTo({
+      url: './personal/personal',
+    })
   },
   btn2: function() {
     
@@ -83,7 +85,9 @@ Page({
     
   },
   btn4: function() {
-    
+    wx.navigateTo({
+      url: './contact/contact',
+    })
   },
 
   bindTapHome: function() {

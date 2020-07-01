@@ -8,41 +8,37 @@
 
 	<view class="cu-avatar xl">{{text_surname}}</view>
 	<view class="identity-box ">
-		<text class="text-xl text-white"> {{text_name}}</text>
-		<text class="text-df text-black">{{text_version}}</text>
+		<text class="text-lg text-white"> {{text_name}}</text>
+		<text class="text-df text-white">{{text_version}}</text>
 	</view>
-
-
-
-
 	<image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
 </view>
 
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 
-	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="btn1">
+	<view class="cu-item arrow" bindtap="btn1">
+		<view class="content" hover-class="none">
 			<text class="cuIcon-wefill text-yellow"></text>
 			<text class="text-grey">{{text1_1}}</text>
 		</view>
 	</view>
 
-	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="btn2">
+	<view class="cu-item arrow" bindtap="btn2">
+		<view class="content" hover-class="none">
 			<text class="cuIcon-questionfill text-red"></text>
 			<text class="text-grey">{{text1_2}}</text>
 		</view>
 	</view>
 
-	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="btn3">
+	<view class="cu-item arrow" bindtap="btn3">
+		<view class="content" hover-class="none">
 			<text class="cuIcon-formfill text-green"></text>
 			<text class="text-grey">{{text1_3}}</text>
 		</view>
 	</view>
 
-	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="btn4">
+	<view class="cu-item arrow" bindtap="btn4">
+		<view class="content" hover-class="none">
 			<text class="cuIcon-writefill text-cyan"></text>
 			<text class="text-grey">{{text1_4}}</text>
 		</view>
