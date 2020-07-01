@@ -1,1 +1,30 @@
 /* pages/main/main.wxss */
+.usr-box {
+  margin-bottom: 20rpx;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  height: 150rpx;
+  width: 100%;
+  background-color: white;
+}
+
+.usrname {
+  margin-left: 30rpx;
+}
+
+.job-box {
+  background-color: white;
+  height: 450rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 120rpx;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+}
+
+.title {
+  height: 60rpx;
+  padding: 3rpx;
+  border-style: solid;
+  border-width: 0 0 3rpx 0;
+  border-color: grey;
+  color: rgb(79, 77, 77);
+}
