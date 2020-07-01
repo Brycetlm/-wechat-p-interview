@@ -77,6 +77,11 @@ Page({
 
   },
   //事件处理函数
+  detail: function() {
+    wx.navigateTo({
+      url: '../job-detail/job-detail',
+    })
+  },
   bindTapHome: function() {
     // TODO
     this.onLoad();

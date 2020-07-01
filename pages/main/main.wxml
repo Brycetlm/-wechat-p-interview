@@ -20,9 +20,76 @@
 
 <view class="job-box">
 	<view class="title"><text>职位推荐:</text></view>
-	<view class="job">
-
+	<!-- 卡片 -->
+	<view class="cu-card article no-card">
+		<view class="cu-item shadow card-content-no-padding">
+			<view class="content">
+				<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill" class="push-content-image"></image>
+				<view class="desc push-content-desc">
+					<view>
+						<text class="push-content-title">软件架构师</text>
+						<view class="cu-tag bg-blue light sm round">22 天前</view>
+					</view>
+					<view>
+						<text><text>IBM 中国，沙坪坝，重庆</text></text>
+					</view>
+				</view>
+				<view class="desc flex-apply-button" bindtap="detail">
+					<view>
+						<text class="text-grey flex-apply-text">详细</text>
+						<text class="cuIcon-right"></text>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
+
+	<view class="cu-card article no-card">
+		<view class="cu-item shadow card-content-no-padding">
+			<view class="content">
+				<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg" mode="aspectFill" class="push-content-image"></image>
+				<view class="desc push-content-desc">
+					<view>
+						<text class="push-content-title">UI 设计师</text>
+						<view class="cu-tag bg-blue light sm round">1 天前</view>
+					</view>
+					<view>
+						<text><text> 微软，微电园，上海</text></text>
+					</view>
+				</view>
+				<view class="desc flex-apply-button" bindtap="detail">
+					<view>
+						<text class="text-grey flex-apply-text">详细</text>
+						<text class="cuIcon-right"></text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+		<view class="cu-card article no-card">
+		<view class="cu-item shadow card-content-no-padding">
+			<view class="content">
+				<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg" mode="aspectFill" class="push-content-image"></image>
+				<view class="desc push-content-desc">
+					<view>
+						<text class="push-content-title">项目经理</text>
+						<view class="cu-tag bg-blue light sm round">2 天前</view>
+					</view>
+					<view>
+						<text><text> 谷歌，硅谷，美国</text></text>
+					</view>
+				</view>
+				<view class="desc flex-apply-button" bindtap="detail">
+					<view>
+						<text class="text-grey flex-apply-text">详细</text>
+						<text class="cuIcon-right"></text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 卡片fin -->
 </view>
 
 
