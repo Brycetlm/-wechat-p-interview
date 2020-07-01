@@ -7,7 +7,11 @@
 <view class="cu-bar bg-white solid-bottom">
 	<view class="action">
 		<text class="cuIcon-title text-blue"></text>
+<<<<<<< HEAD
 		<text class="text-black text-bold">联系方式：</text>
+=======
+		<text class="text-black text-bold">联系方式</text>
+>>>>>>> ec721da6d7e093b8050a459dda64816a102a1f17
 	</view>
 </view>
 

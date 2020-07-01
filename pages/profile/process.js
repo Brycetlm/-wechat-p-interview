@@ -1,26 +1,41 @@
-// pages/profile/profile.js
+// pages/profile/process.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    basicsList: [{
+      icon: 'usefullfill',
+      name: '已投递'
+    }, {
+      icon: 'radioboxfill',
+      name: '开始审核'
+    }, {
+      icon: 'roundclosefill',
+      name: '审核中'
+    }, {
+      icon: 'roundcheckfill',
+      name: '完成审核'
+    }, ],
+    basics: 0,
+    numList: [{
+      name: '已投递'
+    }, {
+      name: '开始审核'
+    }, {
+      name: '审核中'
+    }, {
+      name: '完成审核'
+    }, ],
+    num: 0,
+    scroll: 0
   },
-
-onToForm:function(param)
-{
-  wx.navigateTo({
-    url: '/pages/profile/form',
-  })
-},
-
-onToProcess:function(param)
-{
-  wx.navigateTo({
-    url: '/pages/profile/process',
-  })
-},
+  basicsSteps() {
+    this.setData({
+      basics: this.data.basics == this.data.basicsList.length - 1 ? 0 : this.data.basics + 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -75,25 +90,5 @@ onToProcess:function(param)
    */
   onShareAppMessage: function () {
 
-  },
-  //事件处理函数
-  bindTapHome: function() {
-    // TODO
-    wx.redirectTo({
-      url: '../main/main',
-    })
-  },
-  bindTapNews: function() {
-    wx.redirectTo({
-      url: '../Jobs/jobs',
-    })
-  },
-  bindTapFile: function() {
-    this.onLoad();
-  },
-  bindTapMy: function() {
-    wx.redirectTo({
-      url: '../my/my',
-    })
   }
 })
