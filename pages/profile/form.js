@@ -30,20 +30,20 @@ Page({
   bindArrChange: function(e) {
     
     this.setData({
-        index: e.detail.value
+      indexTitle: e.detail.value
     })
 },
 
 bindPayChange: function(e) {
     
   this.setData({
-      index: e.detail.value
+      indexPay: e.detail.value
   })
 },
 bindWorkChange: function(e) {
     
   this.setData({
-      index: e.detail.value
+      indexWork: e.detail.value
   })
 },
 

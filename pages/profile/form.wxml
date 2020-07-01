@@ -82,10 +82,10 @@
 
 <view class="cu-form-group">	
 	<view class="title">期望薪资</view>	
-<picker bindchange="bindPayChange" value="{{index}}" range="{{arrayPay}}">
+<picker bindchange="bindPayChange" value="{{indexPay}}" range="{{arrayPay}}">
       <!-- <view class="weui-btn" type="default">自定义</view> -->
       <view class="picker">
-				{{index>-1?array[index]:'选择期望薪资'}}
+				{{indexPay>-1?arrayPay[indexPay]:'选择期望薪资'}}
 			</view>
 </picker>
 </view>
@@ -93,10 +93,10 @@
 
 <view class="cu-form-group">	
 	<view class="title">工作经验</view>	
-<picker bindchange="bindWorkChange" value="{{index}}" range="{{arrayWork}}">
+<picker bindchange="bindWorkChange" value="{{indexWork}}" range="{{arrayWork}}">
       <!-- <view class="weui-btn" type="default">自定义</view> -->
       <view class="picker">
-				{{index>-1?array[index]:'选择工作经验'}}
+				{{indexWork>-1?arrayWork[indexWork]:'选择工作经验'}}
 			</view>
 </picker>
 </view>
@@ -104,10 +104,10 @@
 
 <view class="cu-form-group">	
 	<view class="title">学历选择</view>	
-<picker bindchange="bindArrChange" value="{{index}}" range="{{array}}">
+<picker bindchange="bindArrChange" value="{{indexTitle}}" range="{{array}}">
       <!-- <view class="weui-btn" type="default">自定义</view> -->
       <view class="picker">
-				{{index>-1?array[index]:'选择学历信息'}}
+				{{indexTitle>-1?array[indexTitle]:'选择学历信息'}}
 			</view>
 </picker>
 </view>
