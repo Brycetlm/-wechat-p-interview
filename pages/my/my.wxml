@@ -4,7 +4,52 @@
 	<view slot="content">个人</view>
 </cu-custom>
 
-<text>pages/my/my.wxml</text>
+<view class="UCenter-bg">
+
+	<view class="cu-avatar xl">{{text_surname}}</view>
+	<view class="identity-box ">
+		<text class="text-xl text-white"> {{text_name}}</text>
+		<text class="text-df text-black">{{text_version}}</text>
+	</view>
+
+
+
+
+	<image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+
+	<view class="cu-item arrow">
+		<view class="content" hover-class="none" bindtap="btn1">
+			<text class="cuIcon-wefill text-yellow"></text>
+			<text class="text-grey">{{text1_1}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow">
+		<view class="content" hover-class="none" bindtap="btn2">
+			<text class="cuIcon-questionfill text-red"></text>
+			<text class="text-grey">{{text1_2}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow">
+		<view class="content" hover-class="none" bindtap="btn3">
+			<text class="cuIcon-formfill text-green"></text>
+			<text class="text-grey">{{text1_3}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow">
+		<view class="content" hover-class="none" bindtap="btn4">
+			<text class="cuIcon-writefill text-cyan"></text>
+			<text class="text-grey">{{text1_4}}</text>
+		</view>
+	</view>
+
+</view>
+<view class="cu-tabbar-height"></view>
 
 <!-- 底部导航栏 -->
 <view class="cu-bar foot tabber bg-white">
@@ -21,4 +66,3 @@
 		<view class="cuIcon-myfill"></view> 个人
 	</view>
 </view>
-

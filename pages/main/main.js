@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cardCur: 0,
+    swiperList: [{
+      id: 0,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+    }, {
+      id: 1,
+        type: 'image',
+        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+    }, {
+      id: 2,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+    }],
   },
 
   /**
@@ -64,6 +77,11 @@ Page({
 
   },
   //事件处理函数
+  detail: function() {
+    wx.navigateTo({
+      url: '../job-detail/job-detail',
+    })
+  },
   bindTapHome: function() {
     // TODO
     this.onLoad();
