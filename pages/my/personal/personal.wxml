@@ -17,6 +17,14 @@
 	<input placeholder="输入姓名"></input>
 </view>
 <view class="cu-form-group">
+	<view class="title">性别</view>
+	<picker bindchange="GenderChange" value="{{indexGender}}" range="{{gender}}">
+		<view class="picker">
+			{{indexGender?gender[indexGender]:'选择性别'}}
+		</view>
+	</picker>
+</view>
+<view class="cu-form-group">
 	<view class="title">出生日期</view>
 	<picker mode="date" value="{{date}}" start="1949-10-01" end="2020-10-01" bindchange="DateChange">
 		<view class="picker">

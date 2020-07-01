@@ -10,8 +10,10 @@ Page({
     CustomBar: app.globalData.CustomBar,
     img: '',
     index: null,
+    indexGender: null,
     date: '2020-7-11',
     picker: ['初中', '高中', '专科', '本科', '硕士', '博士', '博士后'],
+    gender: ['男', '女'],
     region: ['北京市', '北京市', '东城区'],
   },
 
@@ -58,6 +60,12 @@ Page({
     console.log(e);
     this.setData({
       index: e.detail.value
+    })
+  },
+  GenderChange(e) {
+    console.log(e);
+    this.setData({
+      indexGender: e.detail.value
     })
   },
   RegionChange: function(e) {
