@@ -1,0 +1,11 @@
+.cu-card .cu-item .content .desc .tag-padding-top {
+  padding-top: 10rpx;
+}
+
+.card-margin-top {
+  margin-top: 20rpx;
+}
+
+.apply-margin-top {
+  margin-top: 50rpx;
+}

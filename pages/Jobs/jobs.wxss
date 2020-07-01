@@ -1,1 +1,66 @@
 /* pages/Jobs/jobs.wxss */
+.favorite-padding-right {
+  padding-right: 20rpx;
+}
+
+.favorite-margin {
+  margin: 20rpx 0;
+}
+
+.push-title-margin {
+  margin-top: 20rpx;
+  margin-bottom: 5rpx;
+}
+
+.cu-card.article>.card-content-no-padding {
+  padding-bottom: 0;
+}
+
+.drawer-content-margin {
+  margin: 160rpx 30rpx;
+}
+
+.cu-card.article>.cu-item .content .push-content-desc {
+  padding: 40rpx 0;
+  flex: 3;
+}
+
+.cu-card.article>.cu-item .content .push-content-image {
+  padding: 20rpx 0;
+  flex: 1;
+}
+
+.cu-card.article>.cu-item .content button {
+  font-size: 26rpx;
+  width: 40rpx;
+  padding: 0;
+  margin: 20rpx 0;
+  text-align: center;
+  margin-left: 0;
+}
+
+.cu-card.article>.cu-item .content .flex-apply-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cu-card.article>.cu-item .content .flex-apply-button .flex-apply-text {
+  flex: 1;
+}
+
+.cu-card.article> .cu-item .content .push-content-desc .push-content-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-right: 10rpx;
+}
+
+.filter-button-area button:not([size='mini']) {
+  width: 160rpx;
+  padding: 20rpx;
+}
+
+.drawer-confirm-button {
+  margin: 20rpx 0;
+}
