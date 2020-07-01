@@ -85,7 +85,9 @@ Page({
     
   },
   btn4: function() {
-    
+    wx.navigateTo({
+      url: './contact/contact',
+    })
   },
 
   bindTapHome: function() {
