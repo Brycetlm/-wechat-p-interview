@@ -6,7 +6,8 @@
     "pages/Jobs/jobs",
     "pages/my/my",
     "pages/profile/profile",
-    "pages/job-detail/job-detail"
+    "pages/job-detail/job-detail",
+    "pages/my/personal/personal"
   ],
   "window": {
     "backgroundTextStyle": "light",

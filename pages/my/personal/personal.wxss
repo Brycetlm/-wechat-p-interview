@@ -1,0 +1,13 @@
+/* pages/my/personal/personal.wxss */
+.upload-box {
+  padding-left: 10rpx;
+}
+
+.upload-box .cu-btn {
+  position: absolute;
+  bottom: 0rpx;
+}
+
+.cu-btn:hover {
+  background-color: rgb(127, 198, 127);
+}
