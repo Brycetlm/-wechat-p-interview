@@ -5,7 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    modalName: null,
+    checkbox: [{
+      value: 0,
+      name: '条件1',
+      checked: false,
+      hot: false,
+    }, {
+      value: 1,
+      name: '条件2',
+      checked: true,
+      hot: false,
+    }, {
+      value: 2,
+      name: '条件3',
+      checked: true,
+      hot: true,
+    }, {
+      value: 3,
+      name: '条件4',
+      checked: false,
+      hot: true,
+    }, {
+      value: 4,
+      name: '条件5',
+      checked: false,
+      hot: false,
+    }, {
+      value: 5,
+      name: '条件6',
+      checked: false,
+      hot: false,
+    }]
   },
 
   /**
@@ -67,6 +98,19 @@ Page({
     wx.navigateTo({
       url: '../job-detail/job-detail',
     })
+  },
+  showModal: function(e) {
+    this.setData({
+      modalName: "FilterModal"
+    });
+  },
+  hideModal: function() {
+    this.setData({
+      modalName: null
+    })
+  },
+  chooseCheckbox: function() {
+
   },
   bindTapHome: function() {
     // TODO

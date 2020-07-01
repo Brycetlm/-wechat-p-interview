@@ -27,8 +27,27 @@
 		<text>您可能感兴趣的职位</text>
 	</view>
 	<view class="content"></view>
-	<view class="action">
+	<view class="action" bindtap="showModal">
 		<text class="cuIcon-filter"></text>
+	</view>
+</view>
+
+<view class="cu-modal drawer-modal justify-end {{modalName=='FilterModal'?'show':''}}">
+	<view class="cu-dialog basis-lg">
+		<view class="cu-list menu text-left drawer-content-margin">
+			<text class="text-bold text-lg">条件筛选</text>
+			<view class="grid col-2 padding-sm filter-button-area">
+				<view wx:for="{{checkbox}}" wx:for-index="index" wx:for-item="item" class="padding-xs" :key="index">
+					<button class="cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox"
+						 :data-value="item.value"> {{item.name}}
+					</button>
+				</view>
+			</view>
+			<view>
+				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="hideModal">确认</button>
+				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="hideModal">取消</button>
+			</view>
+		</view>
 	</view>
 </view>
 

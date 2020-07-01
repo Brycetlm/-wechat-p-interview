@@ -16,6 +16,10 @@
   padding-bottom: 0;
 }
 
+.drawer-content-margin {
+  margin: 160rpx 30rpx;
+}
+
 .cu-card.article>.cu-item .content .push-content-desc {
   padding: 40rpx 0;
   flex: 3;
@@ -50,4 +54,13 @@
   font-size: 30rpx;
   font-weight: bold;
   padding-right: 10rpx;
+}
+
+.filter-button-area button:not([size='mini']) {
+  width: 160rpx;
+  padding: 20rpx;
+}
+
+.drawer-confirm-button {
+  margin: 20rpx 0;
 }
