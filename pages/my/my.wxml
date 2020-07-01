@@ -21,28 +21,28 @@
 <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
 
 	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="">
+		<view class="content" hover-class="none" bindtap="btn1">
 			<text class="cuIcon-wefill text-yellow"></text>
 			<text class="text-grey">{{text1_1}}</text>
 		</view>
 	</view>
 
 	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="">
+		<view class="content" hover-class="none" bindtap="btn2">
 			<text class="cuIcon-questionfill text-red"></text>
 			<text class="text-grey">{{text1_2}}</text>
 		</view>
 	</view>
 
 	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="">
+		<view class="content" hover-class="none" bindtap="btn3">
 			<text class="cuIcon-formfill text-green"></text>
 			<text class="text-grey">{{text1_3}}</text>
 		</view>
 	</view>
 
 	<view class="cu-item arrow">
-		<view class="content" hover-class="none" bindtap="">
+		<view class="content" hover-class="none" bindtap="btn4">
 			<text class="cuIcon-writefill text-cyan"></text>
 			<text class="text-grey">{{text1_4}}</text>
 		</view>

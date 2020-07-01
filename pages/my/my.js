@@ -73,6 +73,19 @@ Page({
 
   },
   //事件处理函数
+  btn1: function() {
+    
+  },
+  btn2: function() {
+    
+  },
+  btn3: function() {
+    
+  },
+  btn4: function() {
+    
+  },
+
   bindTapHome: function() {
     // TODO
     wx.redirectTo({
