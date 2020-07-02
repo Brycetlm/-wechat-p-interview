@@ -1,4 +1,8 @@
 // pages/Jobs/jobs.js
+
+const jobsService = require('../../services/jobs.service');
+const companyService = require('../../services/company.service');
+
 Page({
 
   /**
@@ -6,6 +10,8 @@ Page({
    */
   data: {
     modalName: null,
+    arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
+    region: ['广东省', '广州市', '海珠区'],
     checkbox: [{
       value: 0,
       name: '条件1',
@@ -36,7 +42,8 @@ Page({
       name: '条件6',
       checked: false,
       hot: false,
-    }]
+    }],
+    jobsList: null,
   },
 
   /**
@@ -50,7 +57,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.loadDefaultJobsList();
   },
 
   /**
@@ -94,39 +101,82 @@ Page({
   onShareAppMessage: function () {
 
   },
-  detail: function() {
-    wx.navigateTo({
-      url: '../job-detail/job-detail',
+
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
     })
   },
-  showModal: function(e) {
+
+  bindPayChange: function(e) {
+    this.setData({
+        indexPay: e.detail.value
+    })
+  },
+
+  getDefaultJobsData: async function () {
+    let data = await jobsService.getDefaultJobsList();
+    let result = [];
+    for (let item of data.getDefaultPositions.list) {
+      let company = await companyService.getCompanyInfoById(item.company_id);
+      company = company.getCompanyInfoById;
+      result.push({
+        company_name: company.name,
+        company_profile: company.profile,
+        province: company.province,
+        city: company.city,
+        region: company.region,
+        assets: company.assets,
+        birthday: company.birthday,
+        phone: company.phone,
+        logo_url: company.logo_url,
+        ...item
+      });
+    }
+    return result;
+  },
+
+  loadDefaultJobsList: async function () {
+    const result = await this.getDefaultJobsData();
+    this.setData({
+      jobsList: result
+    })
+  },
+
+  detail: function (e) {
+    console.log(e.currentTarget.dataset);
+    wx.navigateTo({
+      url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  showModal: function (e) {
     this.setData({
       modalName: "FilterModal"
     });
   },
-  hideModal: function() {
+  hideModal: function () {
     this.setData({
       modalName: null
     })
   },
-  chooseCheckbox: function() {
+  chooseCheckbox: function () {
 
   },
-  bindTapHome: function() {
+  bindTapHome: function () {
     // TODO
     wx.redirectTo({
       url: '../main/main',
     })
   },
-  bindTapNews: function() {
+  bindTapNews: function () {
     this.onLoad();
   },
-  bindTapFile: function() {
+  bindTapFile: function () {
     wx.redirectTo({
       url: '../profile/profile',
     })
   },
-  bindTapMy: function() {
+  bindTapMy: function () {
     wx.redirectTo({
       url: '../my/my',
     })

@@ -64,3 +64,17 @@
 .drawer-confirm-button {
   margin: 20rpx 0;
 }
+
+.jobs-item-margin-bottom {
+  margin-bottom: 5rpx; 
+}
+
+.form-title {
+  text-align: justify;
+  padding-right: 30rpx;
+  padding-left: 30rpx;
+	font-size: 30rpx;
+	position: relative;
+	height: 60rpx;
+	line-height: 60rpx;
+}
