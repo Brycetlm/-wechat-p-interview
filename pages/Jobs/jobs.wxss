@@ -64,3 +64,7 @@
 .drawer-confirm-button {
   margin: 20rpx 0;
 }
+
+.jobs-item-margin-bottom {
+  margin-bottom: 5rpx; 
+}

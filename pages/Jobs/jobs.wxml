@@ -51,18 +51,18 @@
 	</view>
 </view>
 
-<view class="cu-card article no-card">
+<view class="cu-card article no-card jobs-item-margin-bottom" wx:for="{{jobsList}}">
 	<view class="cu-item shadow card-content-no-padding">
 		<view class="content">
-			<image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg"
+			<image src="{{item.logo_url}}"
 				mode="aspectFill" class="push-content-image"></image>
 			<view class="desc push-content-desc">
 				<view>
-					<text class="push-content-title">软件架构师</text>
-					<view class="cu-tag bg-blue light sm round">22 天前</view>
+					<text class="push-content-title">{{item.name}}</text>
+					<view class="cu-tag bg-blue light sm round">{{item.updated_at}}</view>
 				</view>
 				<view>
-					<text><text>IBM 中国，沙坪坝，重庆</text></text>
+					<text><text>{{item.company_name}}，{{item.region}}，{{item.city}}，{{item.province}}</text></text>
 				</view>
 			</view>
 			<view class="desc flex-apply-button" bindtap="detail">
