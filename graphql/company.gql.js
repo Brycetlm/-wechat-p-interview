@@ -9,6 +9,7 @@ query ($companyId: Int!) {
     province
     city
     region
+    corporate
     assets
     birthday
     phone

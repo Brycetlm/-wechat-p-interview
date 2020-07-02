@@ -30,6 +30,7 @@ Page({
       assets: company.assets,
       birthday: company.birthday,
       phone: company.phone,
+      corporate: company.corporate,
       logo_url: company.logo_url,
       ...job
     };

@@ -6,6 +6,11 @@
   margin-top: 20rpx;
 }
 
-.apply-margin-top {
+.apply-margin {
   margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.cu-card .cu-item .content .desc .normal-height, .cu-card .cu-item .content .desc .text-content {
+  height: 2em;
 }

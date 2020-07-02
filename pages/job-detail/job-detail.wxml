@@ -12,7 +12,20 @@
 
 <view class="cu-card article no-card card-margin-top">
 	<view class="cu-item shadow">
-		<view class="title"><view class="text-cut">简介</view></view>
+		<view class="title"><view class="text-cut">公司简介</view></view>
+		<view class="content">
+			<view class="desc">
+				<view class="text-content normal-height">公司法人：{{jobInfo.corporate}}</view>
+				<view class="text-content normal-height">注册资产：{{jobInfo.assets}}</view>
+				<view class="text-content normal-height">注册日期：{{jobInfo.birthday}}</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="cu-card article no-card card-margin-top">
+	<view class="cu-item shadow">
+		<view class="title"><view class="text-cut">职位简介</view></view>
 		<view class="content">
 			<view class="desc">
 				<view class="text-content">{{jobInfo.profile}}</view>
@@ -47,7 +60,7 @@
 </view>
 
 <view>
-  <button class="bg-blue round apply-margin-top">立即申请</button>
+  <button class="bg-blue round apply-margin">立即申请</button>
 </view>
 
 <!-- <view class="cu-bar foot tabber bg-white">
