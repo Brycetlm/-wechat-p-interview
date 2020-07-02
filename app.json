@@ -6,11 +6,8 @@
     "pages/Jobs/jobs",
     "pages/my/my",
     "pages/profile/profile",
-<<<<<<< HEAD
-=======
     "pages/profile/form",
     "pages/profile/process",
->>>>>>> ec721da6d7e093b8050a459dda64816a102a1f17
     "pages/job-detail/job-detail",
     "pages/my/personal/personal",
     "pages/my/contact/contact"

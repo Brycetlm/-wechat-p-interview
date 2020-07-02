@@ -1,6 +1,6 @@
 <!--pages/my/my.wxml-->
 <!-- 顶部导航栏 -->
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-blue" isBack="{{false}}">
 	<view slot="content">个人</view>
 </cu-custom>
 

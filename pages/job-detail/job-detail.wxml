@@ -51,7 +51,7 @@
   <button class="bg-blue round apply-margin-top">立即申请</button>
 </view>
 
-<view class="cu-bar foot tabber bg-white">
+<!-- <view class="cu-bar foot tabber bg-white">
 	<view class="action text-grey" bindtap="bindTapHome">
 		<view class="cuIcon-home"></view> 首页
 	</view>
@@ -64,4 +64,4 @@
 	<view class="action text-grey" bindtap="bindTapMy">
 		<view class="cuIcon-my"></view> 个人
 	</view>
-</view>
+</view> -->
