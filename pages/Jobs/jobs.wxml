@@ -1,6 +1,6 @@
 <!--pages/Jobs/jobs.wxml-->
 <!-- 顶部导航栏 -->
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-blue" isBack="{{false}}">
 	<view slot="content">求职</view>
 </cu-custom>
 
