@@ -109,24 +109,13 @@ Page({
       url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,
     })
   },
-  showModal: function (e) {
-    this.setData({
-      modalName: "FilterModal"
-    });
-  },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   },
-  //事件处理函数
-  detail: function() {
-    wx.navigateTo({
-      url: '../job-detail/job-detail',
-    })
-  },
+
   bindTapHome: function() {
     // TODO
     this.onLoad();

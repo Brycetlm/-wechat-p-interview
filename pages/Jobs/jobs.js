@@ -14,32 +14,32 @@ Page({
     region: ['广东省', '广州市', '海珠区'],
     checkbox: [{
       value: 0,
-      name: '条件1',
+      name: '游戏',
       checked: false,
       hot: false,
     }, {
       value: 1,
-      name: '条件2',
-      checked: true,
+      name: '信息安全',
+      checked: false,
       hot: false,
     }, {
       value: 2,
-      name: '条件3',
-      checked: true,
-      hot: true,
-    }, {
-      value: 3,
-      name: '条件4',
+      name: '移动互联网',
       checked: false,
       hot: true,
     }, {
+      value: 3,
+      name: '互联网',
+      checked: false,
+      hot: false,
+    }, {
       value: 4,
-      name: '条件5',
+      name: '计算机软件',
       checked: false,
       hot: false,
     }, {
       value: 5,
-      name: '条件6',
+      name: '其他行业',
       checked: false,
       hot: false,
     }],
