@@ -10,6 +10,8 @@ Page({
    */
   data: {
     modalName: null,
+    arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
+    region: ['广东省', '广州市', '海珠区'],
     checkbox: [{
       value: 0,
       name: '条件1',
@@ -98,6 +100,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
+    })
+  },
+
+  bindPayChange: function(e) {
+    this.setData({
+        indexPay: e.detail.value
+    })
   },
 
   getDefaultJobsData: async function () {
