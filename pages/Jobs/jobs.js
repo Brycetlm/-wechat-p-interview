@@ -129,9 +129,10 @@ Page({
     })
   },
 
-  detail: function () {
+  detail: function (e) {
+    console.log(e.currentTarget.dataset);
     wx.navigateTo({
-      url: '../job-detail/job-detail',
+      url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,
     })
   },
   showModal: function (e) {

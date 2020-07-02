@@ -65,7 +65,7 @@
 					<text><text>{{item.company_name}}，{{item.region}}，{{item.city}}，{{item.province}}</text></text>
 				</view>
 			</view>
-			<view class="desc flex-apply-button" bindtap="detail">
+			<view class="desc flex-apply-button" data-id="{{item.id}}" bindtap="detail">
 				<view>
 					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
