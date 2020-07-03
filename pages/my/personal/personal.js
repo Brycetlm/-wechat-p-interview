@@ -1,5 +1,7 @@
 // pages/my/personal/personal.js
 const app = getApp();
+const userService = require('../../../services/user.service');
+
 Page({
 
   /**
@@ -9,15 +11,34 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     img: '',
+    name: '',
     index: null,
     indexGender: null,
     date: '2020-7-11',
-    picker: ['初中', '高中', '专科', '本科', '硕士', '博士', '博士后'],
+    picker: ['初中', '高中', '专科', '本科', '硕士', '博士'],
+    enumPicker: ['MIDDLE_SCHOOL', 'HIGH_SCHOOL', 'UNDERGRADUATE', 'COLLEGE', 'MASTER', 'DOCTOR'],
     gender: ['男', '女'],
+    mail: '',
+    phone: '',
     region: ['北京市', '北京市', '东城区'],
   },
 
   //自定义函数
+  inputName(e) {
+    this.setData({
+      name: e.detail.value
+    })
+  },
+  inputMail(e) {
+    this.setData({
+      mail: e.detail.value
+    })
+  },
+  inputPhone(e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
   ChooseImage() {
     wx.chooseImage({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -68,10 +89,47 @@ Page({
       indexGender: e.detail.value
     })
   },
-  RegionChange: function(e) {
+  RegionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
+  },
+
+  //后端接口函数
+  Save: async function () {
+    let name = this.data.name;
+    let avatar = this.data.img;
+    let gender = this.data.gender[this.data.indexGender];
+    let birth = this.data.date;
+    let edu = this.data.enumPicker[this.data.index];
+    let mail = this.data.mail;
+    let phone = this.data.phone;
+    let province = this.data.region[0];
+    let city = this.data.region[1];
+    let region = this.data.region[2];
+    console.log(avatar);
+    let result = await userService.updateUserInfo({
+      name: name,
+      gender: gender,
+      birthday: birth,
+      education: edu,
+      province: province,
+      id: 1,
+      city: city,
+      region: region,
+      email: mail,
+      phone,
+      phone,
+      avatar_url: avatar[0]
+    });
+    console.log(result);
+    if (result) {
+      wx.showModal({
+        content: '保存成功！',
+        showCancel: false,
+      })
+    }
+    return result;
   },
 
   /**
