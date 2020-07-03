@@ -76,7 +76,7 @@
 <form>
  <view class="cu-form-group margin-top">
 		<view class="title">简历名</view>
-		<input placeholder="为你的简历取名" name="input"></input>
+		<input placeholder="为你的简历取名" name="input" bindinput="bindNameChange"></input>
 	</view>
 
 
@@ -148,7 +148,7 @@
 </form>
 
 <view style="margin-top:100rpx"></view>
-<button class="cu-btn bg-blue" style="left:25%">保存简历</button>
+<button class="cu-btn bg-blue" style="left:25%" bindtap="submitResume">保存简历</button>
 
 
 
