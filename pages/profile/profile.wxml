@@ -11,7 +11,7 @@
 
 <view class="text-center bg-white" style="height:100rpx" >
 	<view class="action" >
-		<text style="font-size:40rpx" bindtap="onToProcess" >简历追踪</text>
+		<text style="font-size:40rpx" bindtap="onToProcess" >申请追踪</text>
 			<!-- <button class="cu-btn bg-blue" bindtap="onToProcess" >开始填写</button> -->
 	</view>
 </view>
@@ -19,7 +19,7 @@
 <view class="shadow-margin"></view>
 
 <view class="new-resume-bg">
-	<text style="font-size:40rpx;font-weight:600;margin-top:2%;margin-left:3%;width:100%;height:17%">填写新的申请</text>
+	<text style="font-size:40rpx;font-weight:600;margin-top:2%;margin-left:3%;width:100%;height:17%">填写新的简历</text>
 	<view class="new-resume-fullfill" > 
 	<button class="cu-btn bg-blue" bindtap="onToForm" >开始填写</button>
 	<view class="center-padding"><text >先填写基本资料，然后获取简历模板，或者以空白简历开始填写</text></view>

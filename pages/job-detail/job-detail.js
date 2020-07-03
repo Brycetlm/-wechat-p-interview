@@ -6,6 +6,14 @@ Page({
   data: {
     jobInfo: null,
   },
+
+  onToStatues:function(param)
+  {
+    wx.navigateTo({
+      url: '../profile/profile-statues/profile-statues',
+    })
+  },
+
   bindTapHome: function () {
     // TODO
     this.onLoad();
