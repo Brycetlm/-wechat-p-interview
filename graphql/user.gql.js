@@ -1,8 +1,8 @@
 const gql = require('./common');
 
 const GET_USER_INFO_BY_ID = `
-query ($uid: Int!){
-  getUserInfoById(userId: $uid){
+query ($userId: Int!){
+  getUserInfoById(userId: $userId){
     id
     openid
     name
@@ -26,6 +26,7 @@ mutation ($userInput: UserInfoUpdateInput!){
 
 
 const getUserInfoById = function(userId){
+  console.log('user.gql:userid:',userId);
   return gql.getGqlObject().query({
     query: GET_USER_INFO_BY_ID,
     variables: {

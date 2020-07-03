@@ -5,7 +5,7 @@
 </cu-custom>
 
 <view class="usr-box">
-	<view class="cu-avatar lg"></view>
+	<view class="cu-avatar lg" style="background-image:url({{img}});"></view>
 	<text class="usrname text-grey">用户名</text>
 </view>
 

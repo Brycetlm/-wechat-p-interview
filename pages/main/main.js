@@ -1,6 +1,7 @@
 // pages/main/main.js
 const jobsService = require('../../services/jobs.service');
 const companyService = require('../../services/company.service');
+const updateService = require('../../services/update.service');
 
 Page({
 
@@ -15,8 +16,8 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
     }, {
       id: 1,
-        type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
     }, {
       id: 2,
       type: 'image',
@@ -35,8 +36,18 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    this.loadDefaultJobsList();
+  onReady: async function () {
+    try {
+      this.loadDefaultJobsList();
+      let url = await updateService.getAvatar('sa');
+      console.log("main:",url);
+      this.setData({
+        img: url,
+      })
+    } catch (e) {
+      console.log('exception!:', e)
+    }
+
   },
 
   /**
@@ -115,21 +126,21 @@ Page({
   onShareAppMessage: function () {
 
   },
-  bindTapHome: function() {
+  bindTapHome: function () {
     // TODO
     this.onLoad();
   },
-  bindTapNews: function() {
+  bindTapNews: function () {
     wx.redirectTo({
       url: '../Jobs/jobs',
     })
   },
-  bindTapFile: function() {
+  bindTapFile: function () {
     wx.redirectTo({
       url: '../profile/profile',
     })
   },
-  bindTapMy: function() {
+  bindTapMy: function () {
     wx.redirectTo({
       url: '../my/my',
     })
