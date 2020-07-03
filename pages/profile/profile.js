@@ -11,14 +11,14 @@ Page({
 onToForm:function(param)
 {
   wx.navigateTo({
-    url: '/pages/profile/form',
+    url: '/pages/profile/form/form',
   })
 },
 
 onToProcess:function(param)
 {
   wx.navigateTo({
-    url: '/pages/profile/process',
+    url: '/pages/profile/process/process',
   })
 },
   /**
