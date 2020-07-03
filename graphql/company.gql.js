@@ -26,6 +26,7 @@ const getCompanyInfoById = function(companyId) {
     }
   });
 }
+console.log(getCompanyInfoById(1));
 
 module.exports = {
   getCompanyInfoById: getCompanyInfoById

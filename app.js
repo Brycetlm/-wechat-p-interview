@@ -5,13 +5,46 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+   
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+
+        // var Params = {
+        //   code: res.code, //临时登录凭证
+        //   //key: self.globalData.MD5Key
+        // };
+        var code=res.code;
+        console.log(code);
+        var appId=wx.getAccountInfoSync().miniProgram.appId;
+        var secret=wx.getAccountInfoSync().miniProgram.secret;
+      if (code) {
+        //var url = 'https://api.weixin.qq.com/sns/jscode2session?appid=wxc6da604aaa087a32&secret=7e1af99f77f198e2cd473bc9bf26ebb1&js_code=' + code + '&grant_type=authorization_code';
+        var url='https://api.weixin.qq.com/sns/jscode2session?appid'+appId+'&secret='+secret+'&js_code='+code+'&grant_type=authorization_code';
+        wx.request({
+          url: url,
+          //method: 'GET',
+          data:{},
+          header:{
+            'content-type':'json'
+          },
+          success: res => {
+            this.globalData.openid = res.data.openid;
+            var openid=res.data.openid;
+            console.log("ppp");
+            console.log(openid);
+            console.log(res.data.openid);
+            console.log(this.globalData.openid);
+          }
+        });
+      }
       }
     })
+
+
+
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {
