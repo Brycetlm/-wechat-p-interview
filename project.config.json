@@ -6,11 +6,7 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-<<<<<<< HEAD
 		"enhance": true,
-=======
-		"enhance": false,
->>>>>>> 4fd622066cb6bda44864cf237979b7dd19475f52
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
