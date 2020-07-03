@@ -29,10 +29,14 @@ Page({
     })
   },
   inputMail(e) {
-    mail: e.detail.value
+    this.setData({
+      mail: e.detail.value
+    })
   },
   inputPhone(e) {
-    phone: e.detail.value
+    this.setData({
+      phone: e.detail.value
+    })
   },
   ChooseImage() {
     wx.chooseImage({
@@ -84,14 +88,14 @@ Page({
       indexGender: e.detail.value
     })
   },
-  RegionChange: function(e) {
+  RegionChange: function (e) {
     this.setData({
       region: e.detail.value
     })
   },
 
   //后端接口函数
-  Save: async function() {
+  Save: async function () {
     let name = this.data.name;
     let avatar = this.data.img;
     let gender = this.data.gender[this.data.indexGender];
@@ -103,17 +107,18 @@ Page({
     let city = this.data.region[1];
     let region = this.data.region[2];
     const result = await userService.updateUserInfo({
-      name:name,
-      birthday:birth,
+      name: name,
+      birthday: birth,
       education: edu,
       province: province,
       city: city,
       region: region,
       email: mail,
-      phone, phone,
+      phone,
+      phone,
       avatar_url: avatar
-    },1)
-    
+    }, 1)
+
     return result;
   },
 
