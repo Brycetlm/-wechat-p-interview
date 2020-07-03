@@ -16,6 +16,7 @@ Page({
     indexGender: null,
     date: '2020-7-11',
     picker: ['初中', '高中', '专科', '本科', '硕士', '博士'],
+    enumPicker: ['MIDDLE_SCHOOL', 'HIGH_SCHOOL', 'UNDERGRADUATE', 'COLLEGE', 'MASTER', 'DOCTOR'],
     gender: ['男', '女'],
     mail: '',
     phone: '',
@@ -100,25 +101,34 @@ Page({
     let avatar = this.data.img;
     let gender = this.data.gender[this.data.indexGender];
     let birth = this.data.date;
-    let edu = this.data.picker[this.data.index];
+    let edu = this.data.enumPicker[this.data.index];
     let mail = this.data.mail;
     let phone = this.data.phone;
     let province = this.data.region[0];
     let city = this.data.region[1];
     let region = this.data.region[2];
-    const result = await userService.updateUserInfo({
+    console.log(avatar);
+    let result = await userService.updateUserInfo({
       name: name,
+      gender: gender,
       birthday: birth,
       education: edu,
       province: province,
+      id: 1,
       city: city,
       region: region,
       email: mail,
       phone,
       phone,
-      avatar_url: avatar
-    }, 1)
-
+      avatar_url: avatar[0]
+    });
+    console.log(result);
+    if (result) {
+      wx.showModal({
+        content: '保存成功！',
+        showCancel: false,
+      })
+    }
     return result;
   },
 

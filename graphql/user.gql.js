@@ -28,7 +28,7 @@ mutation ($userInput: UserInfoUpdateInput!){
 const getUserInfoById = function(userId){
   return gql.getGqlObject().query({
     query: GET_USER_INFO_BY_ID,
-    varibles: {
+    variables: {
       userId: +userId
     }
   });
@@ -38,7 +38,7 @@ const updateUserInfo = function(userInput){
   console.log(userInput);
   return gql.getGqlObject().mutate({
     mutation: UPDATE_USER_INFO,
-    varibles: {
+    variables: {
       userInput: userInput
     }
   });
