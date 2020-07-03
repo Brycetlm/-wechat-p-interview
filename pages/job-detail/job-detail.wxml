@@ -1,0 +1,67 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+	<view slot="content">职位详细</view>
+</cu-custom>
+
+<view class="cu-bar bg-white">
+	<view class="action">
+		<text class="cuIcon-titles text-blue"></text>
+		<text class="text-xl text-bold" decode="true">职位名 &nbsp;</text>
+    <text class="text-df"> 公司名</text>
+	</view>
+</view>
+
+<view class="cu-card article no-card card-margin-top">
+	<view class="cu-item shadow">
+		<view class="title"><view class="text-cut">简介</view></view>
+		<view class="content">
+			<view class="desc">
+				<view class="text-content">文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案</view>
+				<view class="tag-padding-top">
+					<view class="cu-tag bg-red light sm round">标签1</view>
+					<view class="cu-tag bg-green light sm round">标签2</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="cu-bar bg-white card-margin-top">
+	<view class="action">
+		<text>所在地区</text>
+	</view>
+	<view class="content"></view>
+	<view class="action">
+		<text class="text-grey favorite-padding-right">xx省xx市xx区</text>
+		<text class="cuIcon-right"></text>
+	</view>
+</view>
+
+<view class="cu-card article no-card card-margin-top">
+	<view class="cu-item shadow">
+		<view class="title"><view class="text-cut">招聘条件</view></view>
+		<view class="content">
+			<view class="desc">
+				<view class="text-content">文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view>
+  <button class="bg-blue round apply-margin-top" bindtap="onToStatues">立即申请</button>
+</view>
+
+<!-- <view class="cu-bar foot tabber bg-white">
+	<view class="action text-grey" bindtap="bindTapHome">
+		<view class="cuIcon-home"></view> 首页
+	</view>
+	<view class="action text-grey" bindtap="bindTapNews">
+		<view class="cuIcon-news"></view> 求职
+	</view>
+	<view class="action text-grey" bindtap="bindTapFile">
+		<view class="cuIcon-form"></view> 简历
+	</view>
+	<view class="action text-grey" bindtap="bindTapMy">
+		<view class="cuIcon-my"></view> 个人
+	</view>
+</view> -->

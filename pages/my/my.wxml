@@ -1,0 +1,64 @@
+<!--pages/my/my.wxml-->
+<!-- 顶部导航栏 -->
+<cu-custom bgColor="bg-blue" isBack="{{false}}">
+	<view slot="content">个人</view>
+</cu-custom>
+
+<view class="UCenter-bg">
+
+	<view class="cu-avatar xl">{{text_surname}}</view>
+	<view class="identity-box ">
+		<text class="text-lg text-white"> {{text_name}}</text>
+		<text class="text-df text-white">{{text_version}}</text>
+	</view>
+	<image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+
+	<view class="cu-item arrow" bindtap="btn1">
+		<view class="content" hover-class="none">
+			<text class="cuIcon-wefill text-yellow"></text>
+			<text class="text-grey">{{text1_1}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow" bindtap="btn2">
+		<view class="content" hover-class="none">
+			<text class="cuIcon-questionfill text-red"></text>
+			<text class="text-grey">{{text1_2}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow" bindtap="btn3">
+		<view class="content" hover-class="none">
+			<text class="cuIcon-formfill text-green"></text>
+			<text class="text-grey">{{text1_3}}</text>
+		</view>
+	</view>
+
+	<view class="cu-item arrow" bindtap="btn4">
+		<view class="content" hover-class="none">
+			<text class="cuIcon-writefill text-cyan"></text>
+			<text class="text-grey">{{text1_4}}</text>
+		</view>
+	</view>
+
+</view>
+<view class="cu-tabbar-height"></view>
+
+<!-- 底部导航栏 -->
+<view class="cu-bar foot tabber bg-white">
+	<view class="action text-grey" bindtap="bindTapHome">
+		<view class="cuIcon-home"></view> 首页
+	</view>
+	<view class="action text-grey" bindtap="bindTapNews">
+		<view class="cuIcon-news"></view> 求职
+	</view>
+	<view class="action text-grey" bindtap="bindTapFile">
+		<view class="cuIcon-form"></view> 简历
+	</view>
+	<view class="action text-blue" bindtap="bindTapMy">
+		<view class="cuIcon-myfill"></view> 个人
+	</view>
+</view>

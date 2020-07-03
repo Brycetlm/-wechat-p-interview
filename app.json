@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/main/main",
+    "pages/Jobs/jobs",
+    "pages/my/my",
+    "pages/profile/profile",
+    "pages/profile/form/form",
+    "pages/profile/process/process",
+    "pages/profile/profile-statues/profile-statues",
+    "pages/job-detail/job-detail",
+    "pages/my/personal/personal",
+    "pages/my/contact/contact"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "cu-custom": "pages/colorui/components/cu-custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

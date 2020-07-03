@@ -1,0 +1,84 @@
+/* pages/main/main.wxss */
+.usr-box {
+  margin-bottom: 20rpx;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  height: 150rpx;
+  width: 100%;
+  background-color: white;
+}
+
+.usrname {
+  margin-left: 30rpx;
+}
+
+.job-box {
+  background-color: white;
+  margin-top: 10rpx;
+  min-height: 600rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 120rpx;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+}
+
+.title {
+  height: 60rpx;
+  padding: 3rpx;
+  border-style: solid;
+  border-width: 0 0 3rpx 0;
+  border-color: grey;
+  color: rgb(79, 77, 77);
+  font-weight: bolder;
+}
+
+/* 卡片 */
+.push-title-margin {
+  margin-top: 20rpx;
+  margin-bottom: 5rpx;
+}
+
+.cu-card {
+  border-style: dotted;
+  border-width: 0 0 3rpx 0;
+  border-color: rgb(194, 191, 191);
+}
+
+.cu-card.article>.card-content-no-padding {
+  padding-bottom: 0;
+}
+
+.cu-card.article>.cu-item .content .push-content-desc {
+  padding: 40rpx 0;
+  flex: 3;
+}
+
+.cu-card.article>.cu-item .content .push-content-image {
+  padding: 20rpx 0;
+  flex: 1;
+}
+
+.cu-card.article>.cu-item .content button {
+  font-size: 26rpx;
+  width: 40rpx;
+  padding: 0;
+  margin: 20rpx 0;
+  text-align: center;
+  margin-left: 0;
+}
+
+.cu-card.article>.cu-item .content .flex-apply-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cu-card.article>.cu-item .content .flex-apply-button .flex-apply-text {
+  flex: 1;
+}
+
+.cu-card.article> .cu-item .content .push-content-desc .push-content-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-right: 10rpx;
+}

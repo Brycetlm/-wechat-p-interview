@@ -1,0 +1,46 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+	<view slot="content">投递记录</view>
+</cu-custom>
+
+
+<view class="bg-white padding">
+<text>简历名</text>
+  <view class="cu-steps">
+    <view class="cu-item {{index>basics?'':'text-red'}}" wx:for="{{basicsList}}" wx:key>
+      <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+    </view>
+  </view>
+</view>
+<!-- <view class="bg-white padding margin-top-xs">
+
+	<view class="cu-steps">
+
+		<view class="cu-item" :class="index>basics?'':'text-orange'" v-for="(item,index) in basicsList" :key="index">
+
+			<text :class="index>basics?'cuIcon-title':'cuIcon-' + item.cuIcon"></text> {{item.name}}
+
+		</view>
+
+	</view>
+
+</view> -->
+
+<!-- <script>
+	export default {
+		data() {
+			return {
+				basicsList: [{cuIcon: 'usefullfill',name: '开始'}, 
+                                    {cuIcon: 'radioboxfill',name: '等待'}, 
+                                    {cuIcon: 'roundclosefill',name: '错误'},
+                                    {cuIcon: 'roundcheckfill',name: '完成'}
+                    ],
+				basics: 0
+			};
+		},
+		methods: {
+			BasicsSteps() {
+				this.basics= this.basics == this.basicsList.length - 1 ? 0 : this.basics + 1				
+			}
+		}
+	}
+</script> -->

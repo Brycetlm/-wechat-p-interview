@@ -1,0 +1,61 @@
+/* pages/profile/profile.wxss */
+.shadow-margin{
+  /* display: flex; */
+	position: relative;
+  height: 25rpx;
+	/* justify-content: space-between; */
+  background-color: rgb(167, 167, 167);
+  opacity: 0.3;
+  
+}
+
+.text-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-resume-bg{
+  display: flex;
+	position: relative;
+  min-height: 400rpx;
+  justify-content: space-between;
+  background-color: white;
+  
+}
+
+.cu-btn{
+  display: flex;
+  justify-content: center;
+  top: 68%;
+  background-color: royalblue;
+}
+
+.center-padding{
+  margin-left: 100rpx;
+  margin-right: 10rpx;
+}
+.new-resume-fullfill{
+  /* display: flex; */
+  margin-left: 60rpx;
+ position: absolute;
+ top: 110rpx;
+  /* position: relative; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 280rpx;
+  /* width: 200rpx; */
+  width:80%;
+  /* justify-content: space-between; */
+  background-color:lightblue;
+  border-radius: 6px;
+}
+.new-resume-outline{
+  display: flex;
+  margin-top:50rpx;
+  border: 3px solid  gainsboro;
+  outline: thin solid rgb(147, 152, 214);
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
