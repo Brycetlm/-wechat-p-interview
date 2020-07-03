@@ -110,9 +110,9 @@ Page({
     let region = this.data.region[2];
     let id = await logService.bindOpenId('sa');
     console.log("id:", id.bindOpenId);
-
+    let result = false;
     try {
-      let result = await userService.updateUserInfo({
+      result = await userService.updateUserInfo({
         name: name,
         gender: gender,
         birthday: birth,
