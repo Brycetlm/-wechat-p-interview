@@ -1,11 +1,13 @@
 // pages/profile/profile.js
+const applyService = require('../../services/apply.service');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    applyList:null,
   },
 
 onToForm:function(param)
@@ -21,6 +23,41 @@ onToProcess:function(param)
     url: '/pages/profile/process/process',
   })
 },
+
+//用户申请数据
+getApplyInfoByUserId: async function () {
+  let data = await applyService.getApplyInfoByUserId(1);
+  //console.log("pooooo");
+  //console.log(data);
+  // for (let item of data.getApplyInfoByUerId.list) {
+  //   let apply = await applyService.getApplyInfoByUerId(item.user_id);
+  //   apply = apply.getApplyInfoByUerId;
+  //   result.push({
+  //     apply_state:apply.state,
+  //     apply_create_time:apply.created_at,
+  //     ...item
+  //   });
+  //let result=data.getApplyInfoByUerId;
+  //}
+  //result=data.getApplyInfoByUerId;
+  console.log(data);
+  let result=data.getApplyInfoByUserId;
+  //console.log(result);
+  console.log(result);
+  return result;
+},
+
+loadApplyList: async function () {
+  const result = await this.getApplyInfoByUserId();
+  console.log(result);
+  this.setData({
+    applyList: result
+  })
+  console.log("applyList");
+  console.log(this.data.applyList);
+},
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,7 +69,7 @@ onToProcess:function(param)
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  this.loadApplyList();
   },
 
   /**
