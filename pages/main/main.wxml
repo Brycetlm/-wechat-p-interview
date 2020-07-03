@@ -6,7 +6,7 @@
 
 <view class="usr-box">
 	<view class="cu-avatar lg" style="background-image:url({{img}});"></view>
-	<text class="usrname text-grey">用户名</text>
+	<text class="usrname text-grey">{{name}}</text>
 </view>
 
 <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">

@@ -24,6 +24,7 @@ Page({
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
     }],
     jobsList: null,
+    name: '孙剑桥',
   },
 
   /**
@@ -40,9 +41,11 @@ Page({
     try {
       this.loadDefaultJobsList();
       let url = await updateService.getAvatar('sa');
+      let name = await updateService.getName('sa');
       console.log("main:",url);
       this.setData({
         img: url,
+        name: name,
       })
     } catch (e) {
       console.log('exception!:', e)
