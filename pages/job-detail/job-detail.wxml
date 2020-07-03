@@ -5,20 +5,32 @@
 <view class="cu-bar bg-white">
 	<view class="action">
 		<text class="cuIcon-titles text-blue"></text>
-		<text class="text-xl text-bold" decode="true">职位名 &nbsp;</text>
-    <text class="text-df"> 公司名</text>
+		<text class="text-xl text-bold" decode="true">{{jobInfo.name}} &nbsp;</text>
+    <text class="text-df"> {{jobInfo.company_name}}</text>
 	</view>
 </view>
 
 <view class="cu-card article no-card card-margin-top">
 	<view class="cu-item shadow">
-		<view class="title"><view class="text-cut">简介</view></view>
+		<view class="title"><view class="text-cut">公司简介</view></view>
 		<view class="content">
 			<view class="desc">
-				<view class="text-content">文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案</view>
+				<view class="text-content normal-height">公司法人：{{jobInfo.corporate}}</view>
+				<view class="text-content normal-height">注册资产：{{jobInfo.assets}}</view>
+				<view class="text-content normal-height">注册日期：{{jobInfo.birthday}}</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="cu-card article no-card card-margin-top">
+	<view class="cu-item shadow">
+		<view class="title"><view class="text-cut">职位简介</view></view>
+		<view class="content">
+			<view class="desc">
+				<view class="text-content">{{jobInfo.profile}}</view>
 				<view class="tag-padding-top">
-					<view class="cu-tag bg-red light sm round">标签1</view>
-					<view class="cu-tag bg-green light sm round">标签2</view>
+					<view class="cu-tag bg-blue light sm round" wx:for="{{jobInfo.tags}}">{{item}}</view>
 				</view>
 			</view>
 		</view>
@@ -31,7 +43,7 @@
 	</view>
 	<view class="content"></view>
 	<view class="action">
-		<text class="text-grey favorite-padding-right">xx省xx市xx区</text>
+		<text class="text-grey favorite-padding-right">{{jobInfo.province}} {{jobInfo.city}} {{jobInfo.region}}</text>
 		<text class="cuIcon-right"></text>
 	</view>
 </view>
@@ -41,14 +53,14 @@
 		<view class="title"><view class="text-cut">招聘条件</view></view>
 		<view class="content">
 			<view class="desc">
-				<view class="text-content">文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案</view>
+				<view class="text-content">{{jobInfo.condition}}</view>
 			</view>
 		</view>
 	</view>
 </view>
 
 <view>
-  <button class="bg-blue round apply-margin-top" bindtap="onToStatues">立即申请</button>
+  <button class="bg-blue round apply-margin">立即申请</button>
 </view>
 
 <!-- <view class="cu-bar foot tabber bg-white">
