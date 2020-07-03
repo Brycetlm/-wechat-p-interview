@@ -1,6 +1,7 @@
 // pages/my/personal/personal.js
 const app = getApp();
 const userService = require('../../../services/user.service');
+const logService = require('../../../services/logs.service');
 
 Page({
 
@@ -107,28 +108,36 @@ Page({
     let province = this.data.region[0];
     let city = this.data.region[1];
     let region = this.data.region[2];
-    console.log(avatar);
-    let result = await userService.updateUserInfo({
-      name: name,
-      gender: gender,
-      birthday: birth,
-      education: edu,
-      province: province,
-      id: 1,
-      city: city,
-      region: region,
-      email: mail,
-      phone,
-      phone,
-      avatar_url: avatar[0]
-    });
-    console.log(result);
-    if (result) {
+    let id = await logService.bindOpenId('sa');
+    console.log("id:", id.bindOpenId);
+
+    try {
+      let result = await userService.updateUserInfo({
+        name: name,
+        gender: gender,
+        birthday: birth,
+        education: edu,
+        province: province,
+        id: id.bindOpenId,
+        city: city,
+        region: region,
+        email: mail,
+        phone,
+        phone,
+        avatar_url: avatar[0]
+      });
+    } catch (e) {
       wx.showModal({
-        content: '保存成功！',
+        content: '保存失败！',
         showCancel: false,
       })
+      return result;
     }
+    wx.showModal({
+      content: '保存成功！',
+      showCancel: false,
+    })
+
     return result;
   },
 

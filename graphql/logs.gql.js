@@ -9,9 +9,7 @@ query ($id: Int!) {
 const BIND_OPENID = `
 query($openId: String!){
   bindOpenId(openId:$openId)
-  {
-    id
-  }
+ 
 }
 `
 const bindOpenId = function(openId) {
@@ -35,5 +33,6 @@ const gqlLogsTest = function () {
 }
 
 module.exports = {
-  gqlLogsTest: gqlLogsTest
+  gqlLogsTest: gqlLogsTest,
+  bindOpenId: bindOpenId
 }
