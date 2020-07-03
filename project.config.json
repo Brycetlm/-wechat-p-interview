@@ -6,15 +6,21 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+<<<<<<< HEAD
 		"enhance": true,
+=======
+		"enhance": false,
+>>>>>>> 4fd622066cb6bda44864cf237979b7dd19475f52
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -23,9 +29,10 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useIsolateContext": true,
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"compileHotReLoad": false,
+		"useIsolateContext": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.3",

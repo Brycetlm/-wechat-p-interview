@@ -115,7 +115,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-
   bindTapHome: function() {
     // TODO
     this.onLoad();

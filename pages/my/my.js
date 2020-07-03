@@ -17,6 +17,12 @@ Page({
     text1_4: "联系我们",
   },
 
+  onToProcess:function(param)
+{
+  wx.navigateTo({
+    url: '/pages/profile/process/process',
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */

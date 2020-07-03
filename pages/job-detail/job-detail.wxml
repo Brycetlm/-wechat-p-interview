@@ -60,7 +60,7 @@
 </view>
 
 <view>
-  <button class="bg-blue round apply-margin">立即申请</button>
+  <button class="bg-blue round apply-margin-top" bindtap="onToStatues">立即申请</button>
 </view>
 
 <!-- <view class="cu-bar foot tabber bg-white">

@@ -6,8 +6,9 @@
     "pages/Jobs/jobs",
     "pages/my/my",
     "pages/profile/profile",
-    "pages/profile/form",
-    "pages/profile/process",
+    "pages/profile/form/form",
+    "pages/profile/process/process",
+    "pages/profile/profile-statues/profile-statues",
     "pages/job-detail/job-detail",
     "pages/my/personal/personal",
     "pages/my/contact/contact"
