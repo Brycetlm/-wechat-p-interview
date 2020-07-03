@@ -8,9 +8,11 @@ Page({
     array: ['本科', '大专', '硕士', '博士', '高中'],
     arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
     arrayWork:['无经验','一年以内','2-3年','3-4年','5年以上',],
+    arrayPermission: ['公开', '私有'],
     date: '2016-09-01',
     time: '12:01',
-    region: ['广东省', '广州市', '海珠区']
+    region: ['广东省', '广州市', '海珠区'],
+    permission: '公开'
   },
   bindDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -19,7 +21,11 @@ Page({
     })
   },
 
-
+  bindPermissionChange: function(e) {
+    this.setData({
+      indexPermission: e.detail.value
+    })
+  },
   
   bindRegionChange: function (e) {
     this.setData({
@@ -28,11 +34,10 @@ Page({
   },
 
   bindArrChange: function(e) {
-    
     this.setData({
       indexTitle: e.detail.value
     })
-},
+  },
 
 bindPayChange: function(e) {
     
