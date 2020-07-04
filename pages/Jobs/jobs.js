@@ -48,7 +48,8 @@ Page({
     searchInput: "",
     filterInput: null,
     skip: 0,
-    take: 5
+    take: 5,
+    isCollected: [],
   },
 
   /**
@@ -105,6 +106,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  collect: function (e) {
+    console.log(e.currentTarget);
+    let index = e.currentTarget.dataset.id;
+    let target = 'isCollected['+index+']';
+    this.setData({
+      [target]: true 
+    })
+    
+  },
+
+  cancel: function(e) {
+    let index = e.currentTarget.dataset.id;
+    console.log(index);
+    let target = 'isCollected['+index+']';
+    this.setData({
+      [target]: false
+    })
   },
 
   bindRegionChange: function (e) {

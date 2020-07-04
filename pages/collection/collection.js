@@ -11,6 +11,7 @@ Page({
    */
   data: {
     favorList: null,
+    
   },
 
   //自定义函数
@@ -20,7 +21,9 @@ Page({
       url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,
     })
   },
-
+  cancel: function(e) {
+    
+  },
   loadFavorList: async function () {
     let user = await LogsService.bindOpenId('sa');
     let userId = parseInt(user.bindOpenId);

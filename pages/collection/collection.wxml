@@ -22,11 +22,11 @@
 					<text><text>{{item.company_name}}，{{item.region}}，{{item.city}}，{{item.province}}</text></text>
 				</view>
 			</view>
-			<view class="desc flex-apply-button" data-id="{{item.id}}" bindtap="detail">
-				<view bindtap="collect">
-					<text class="cuIcon-favorfill" bindtap="cancel"></text>
-				</view>
+			<view class="desc flex-apply-button" data-id="{{item.id}}">
 				<view>
+					<text class="cuIcon-favorfill" bindtap="cancel" data-id="{{index}}"></text>
+				</view>
+				<view class="margin-top" bindtap="detail">
 					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
 				</view>
@@ -34,4 +34,3 @@
 		</view>
 	</view>
 </view>
-

@@ -47,8 +47,7 @@
 			<view class="form-title">职位类型</view>
 			<view class="grid col-2 padding-sm filter-button-area">
 				<view wx:for="{{checkbox}}" wx:for-index="index" wx:for-item="item" class="padding-xs" :key="index">
-					<button class="text-xs cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox"
-						:data-value="item.value" data-index="{{index}}"> {{item.name}}
+					<button class="text-xs cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" :data-value="item.value" data-index="{{index}}"> {{item.name}}
 					</button>
 				</view>
 			</view>
@@ -82,17 +81,12 @@
 					<text><text>{{item.company_name}}，{{item.region}}，{{item.city}}，{{item.province}}</text></text>
 				</view>
 			</view>
-			<view class="desc flex-apply-button" data-id="{{item.id}}" bindtap="detail">
-				<view bindtap="collect">
-					<!-- <block wx:if="">
-						<text class="cuIcon-favor"></text>
-					</block>
-					<block wx:if="">
-						<text class="cuIcon-favorfill"></text>
-					</block> -->
-					<text class="cuIcon-favor"></text>
+			<view class="desc flex-apply-button" data-id="{{item.id}}">
+				<view>
+					<text class="cuIcon-favorfill" wx:if="{{isCollected[index]==true}}" bindtap="cancel" data-id="{{index}}"></text>
+					<text class="cuIcon-favor" wx:else="{{isCollected[index]==false}}" bindtap="collect" data-id="{{index}}"></text>
 				</view>
-				<view class="margin-top">
+				<view class="margin-top" bindtap="detail">
 					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
 				</view>
