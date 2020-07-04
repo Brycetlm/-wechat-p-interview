@@ -162,6 +162,11 @@ Page({
   chooseCheckbox: function () {
 
   },
+  TapCollection: function() {
+    wx.navigateTo({
+      url: '../collection/collection',
+    })
+  },
   bindTapHome: function () {
     // TODO
     wx.redirectTo({

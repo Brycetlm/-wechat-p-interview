@@ -1,0 +1,37 @@
+<!--pages/collection/collection.wxml-->
+<!-- 顶部导航栏 -->
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+	<view slot="content">收藏</view>
+</cu-custom>
+
+<view class="cu-bar bg-white push-title-margin margin-top">
+	<view class="action text-bold">你的职位收藏</view>
+</view>
+
+<!--  -->
+<view class="cu-card article no-card jobs-item-margin-bottom margin-top" wx:for="{{favorList}}">
+	<view class="cu-item shadow card-content-no-padding">
+		<view class="content">
+			<image src="{{item.logo_url}}" mode="aspectFill" class="push-content-image"></image>
+			<view class="desc push-content-desc">
+				<view>
+					<text class="push-content-title">{{item.name}}</text>
+					<view class="cu-tag bg-blue light sm round">{{item.updated_at}}</view>
+				</view>
+				<view>
+					<text><text>{{item.company_name}}，{{item.region}}，{{item.city}}，{{item.province}}</text></text>
+				</view>
+			</view>
+			<view class="desc flex-apply-button" data-id="{{item.id}}" bindtap="detail">
+				<view bindtap="collect">
+					<text class="cuIcon-favorfill" bindtap="cancel"></text>
+				</view>
+				<view>
+					<text class="text-grey flex-apply-text">详细</text>
+					<text class="cuIcon-right"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
