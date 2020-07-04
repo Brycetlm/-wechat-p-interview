@@ -7,7 +7,7 @@
 <view class="cu-bar search bg-blue">
 	<view class="search-form round">
 		<text class="cuIcon-search"></text>
-		<input :adjust-position="false" type="text" placeholder="搜索公司名或职位"></input>
+		<input :adjust-position="false" type="text" placeholder="搜索公司名或职位" confirm-type="search" bindconfirm="search"></input>
 	</view>
 </view>
 
@@ -47,7 +47,8 @@
 			<view class="form-title">职位类型</view>
 			<view class="grid col-2 padding-sm filter-button-area">
 				<view wx:for="{{checkbox}}" wx:for-index="index" wx:for-item="item" class="padding-xs" :key="index">
-					<button class="text-xs cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" :data-value="item.value"> {{item.name}}
+					<button class="text-xs cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox"
+						:data-value="item.value" data-index="{{index}}"> {{item.name}}
 					</button>
 				</view>
 			</view>
@@ -61,7 +62,7 @@
 			</view>
 
 			<view>
-				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="hideModal">确认</button>
+				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="filter">确认</button>
 				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="hideModal">取消</button>
 			</view>
 		</view>
