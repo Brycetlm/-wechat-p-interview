@@ -6,6 +6,12 @@ const getLogTest = function() {
   return result;
 }
 
+const bindOpenId = function(openId) {
+  const result = gqlLogsService.bindOpenId(openId);
+  return result;
+}
+
 module.exports = {
-  getLogTest: getLogTest
+  getLogTest: getLogTest,
+  bindOpenId: bindOpenId
 }

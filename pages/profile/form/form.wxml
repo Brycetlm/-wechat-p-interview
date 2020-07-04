@@ -76,7 +76,7 @@
 <form>
  <view class="cu-form-group margin-top">
 		<view class="title">简历名</view>
-		<input placeholder="为你的简历取名" name="input"></input>
+		<input placeholder="为你的简历取名" name="input" bindinput="bindNameChange"></input>
 	</view>
 
 
@@ -136,10 +136,19 @@
        </view> 
         </picker>
 </view>
+
+<view class="cu-form-group">
+	<view class="section__title">权限</view>
+	<picker bindchange="bindPermissionChange" value="{{indexPermission}}" range="{{arrayPermission}}">
+      <view class="picker">
+				{{indexPermission>-1?arrayPermission[indexPermission]:'选择权限'}}
+			</view>
+	</picker>
+</view>
 </form>
 
 <view style="margin-top:100rpx"></view>
-<button class="cu-btn bg-blue" style="left:25%">保存简历</button>
+<button class="cu-btn bg-blue" style="left:25%" bindtap="submitResume">保存简历</button>
 
 
 

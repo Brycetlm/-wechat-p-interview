@@ -1,6 +1,7 @@
 // pages/profile/profile.js
 const applyService = require('../../services/apply.service');
-
+const positionService = require('../../services/position.service');
+const companyService=require('../../services/company.service');
 Page({
 
   /**
@@ -8,6 +9,7 @@ Page({
    */
   data: {
     applyList:null,
+    nameList:null,
   },
 
 onToForm:function(param)
@@ -25,36 +27,37 @@ onToProcess:function(param)
 },
 
 //用户申请数据
-getApplyInfoByUserId: async function () {
-  let data = await applyService.getApplyInfoByUserId(1);
-  //console.log("pooooo");
-  //console.log(data);
-  // for (let item of data.getApplyInfoByUerId.list) {
-  //   let apply = await applyService.getApplyInfoByUerId(item.user_id);
-  //   apply = apply.getApplyInfoByUerId;
-  //   result.push({
-  //     apply_state:apply.state,
-  //     apply_create_time:apply.created_at,
-  //     ...item
-  //   });
-  //let result=data.getApplyInfoByUerId;
-  //}
-  //result=data.getApplyInfoByUerId;
-  console.log(data);
+getApplyInfoByUserId: async function (id) {
+  let data = await applyService.getApplyInfoByUserId(id); //调试时使用默认参数1
   let result=data.getApplyInfoByUserId;
-  //console.log(result);
-  console.log(result);
   return result;
 },
 
-loadApplyList: async function () {
-  const result = await this.getApplyInfoByUserId();
-  console.log(result);
+loadApplyList: async function (id) {
+  const result = await this.getApplyInfoByUserId(1); //调试时使用默认参数1  在onready中调用
+  //console.log(result);
   this.setData({
     applyList: result
   })
-  console.log("applyList");
-  console.log(this.data.applyList);
+  //console.log("applyList");
+  //console.log(this.data.applyList);
+},
+
+getPositionIdCompanyname:async function(id)  //由positionId获取职位名和公司名
+{
+  const resultPosition=await positionService.getPositionById(id);   //测试onready中调用。默认为1
+  const resultCompay=await companyService.getCompanyInfoById(resultPosition.getPositionById.company_id);
+  let pName_cName=[];
+  //console.log(resultCompay);
+  pName_cName.push({
+    position_name:resultPosition.getPositionById.name,
+    company_name:resultCompay.getCompanyInfoById.name});
+  this.setData({
+    nameList:pName_cName
+  })
+  //console.log(pName_cName);
+  //console.log("position");
+  console.log(this.data.nameList);
 },
 
 
@@ -69,7 +72,8 @@ loadApplyList: async function () {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  this.loadApplyList();
+  this.loadApplyList(1);
+  this.getPositionIdCompanyname(1);
   },
 
   /**

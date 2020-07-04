@@ -9,7 +9,7 @@ query ($id: Int!) {
 const BIND_OPENID = `
 query($openId: String!){
   bindOpenId(openId:$openId)
-
+ 
 }
 `
 const bindOpenId = function(openId) {
@@ -22,6 +22,7 @@ const bindOpenId = function(openId) {
 }
 //console.log(bindOpenId("sa"));
 
+
 const gqlLogsTest = function () {
   return gql.getGqlObject().query({
     query: GET_NAME,
@@ -32,5 +33,6 @@ const gqlLogsTest = function () {
 }
 
 module.exports = {
-  gqlLogsTest: gqlLogsTest
+  gqlLogsTest: gqlLogsTest,
+  bindOpenId: bindOpenId
 }

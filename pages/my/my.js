@@ -1,10 +1,15 @@
 // pages/my/my.js
+const updateService = require('../../services/update.service');
+
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    img: null,
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
@@ -17,12 +22,11 @@ Page({
     text1_4: "联系我们",
   },
 
-  onToProcess:function(param)
-{
-  wx.navigateTo({
-    url: '/pages/profile/process/process',
-  })
-},
+  onToProcess: function (param) {
+    wx.navigateTo({
+      url: '/pages/profile/process/process',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -33,7 +37,18 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: async function () {
+    let url = await updateService.getAvatar('sa');
+    let name = await updateService.getName('sa');
+    let email = await updateService.getMail('sa');
+    console.log("my:url:", url);
+    console.log("my:name:",name);
+    console.log("my:email:",email);
+    this.setData({
+      img: url,
+      text_name: name,
+      text_version: email,
+    })
 
   },
 
@@ -79,40 +94,40 @@ Page({
 
   },
   //事件处理函数
-  btn1: function() {
+  btn1: function () {
     wx.navigateTo({
       url: './personal/personal',
     })
   },
-  btn2: function() {
-    
+  btn2: function () {
+
   },
-  btn3: function() {
-    
+  btn3: function () {
+
   },
-  btn4: function() {
+  btn4: function () {
     wx.navigateTo({
       url: './contact/contact',
     })
   },
 
-  bindTapHome: function() {
+  bindTapHome: function () {
     // TODO
     wx.redirectTo({
       url: '../main/main',
     })
   },
-  bindTapNews: function() {
+  bindTapNews: function () {
     wx.redirectTo({
       url: '../Jobs/jobs',
     })
   },
-  bindTapFile: function() {
+  bindTapFile: function () {
     wx.redirectTo({
       url: '../profile/profile',
     })
   },
-  bindTapMy: function() {
+  bindTapMy: function () {
     this.onLoad();
   }
 })

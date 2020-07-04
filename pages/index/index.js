@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const logService = require('../../services/logs.service');
 
 Page({
   data: {
@@ -10,9 +11,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: async function() {
+    //获取id传入main界面
+    let ID = await logService.bindOpenId('sa');
+    let id = ID.bindOpenId;
+
     wx.navigateTo({
-      url: '../main/main'
+      url: '../main/main?id='+id
     })
   },
   onLoad: function () {

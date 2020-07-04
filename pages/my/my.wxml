@@ -6,7 +6,7 @@
 
 <view class="UCenter-bg">
 
-	<view class="cu-avatar xl">{{text_surname}}</view>
+	<view class="cu-avatar xl" style="background-image:url({{img}});"></view>
 	<view class="identity-box ">
 		<text class="text-lg text-white"> {{text_name}}</text>
 		<text class="text-df text-white">{{text_version}}</text>
