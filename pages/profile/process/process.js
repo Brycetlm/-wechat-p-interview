@@ -26,7 +26,8 @@ Page({
   basicsList:null,
   applyList:null,
   basics: 0,  //-1 已投递
-  scroll: 0
+  scroll: 0,
+  withDraw:null,
   },
 
   // basicsSteps() {
@@ -36,7 +37,27 @@ Page({
   // },
 
   
-
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+    if(this.data.applyList[0].state!="POST")
+    {
+      this.setData({
+        withDraw:"撤销失败，已开始审核"
+      })
+    }
+    else {
+      this.setData({
+        withDraw:"撤销成功！"
+      })
+    }
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
   
 
 //申请状态获取
@@ -63,8 +84,8 @@ changeResult()
     // console.log("test");
     // console.log(this.data.applyList);
     // console.log((this.data.applyList[0].id));
-    if(this.data.applyList[0].id==1)
-    {this.setData(
+    //if(this.data.applyList[0].id==1)
+    this.setData(
       {
         basicsList:[{
           icon: 'usefullfill',
@@ -80,7 +101,7 @@ changeResult()
         ]
       }
     )
-    }
+    
     // console.log("name");
     // console.log(this.data.applyList);
     // console.log(this.data.applyList.name);
@@ -88,6 +109,7 @@ changeResult()
     // console.log(this.data.basicsList[0].name);
   },
 
+  
   /**
    * 生命周期函数--监听页面加载
    */
