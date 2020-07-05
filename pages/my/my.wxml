@@ -23,7 +23,7 @@
 		</view>
 	</view>
 
-	<view class="cu-item arrow" bindtap="btn2" bindtap="onToProcess">
+	<view class="cu-item arrow" bindtap="btn2">
 		<view class="content" hover-class="none">
 			<text class="cuIcon-questionfill text-red"></text>
 			<text class="text-grey" >{{text1_2}}</text>

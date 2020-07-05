@@ -57,12 +57,14 @@ Page({
     })
   },
 
-  cancel: function (e) {
+  cancel: async function (e) {
     let index = e.currentTarget.dataset.id;
 
     console.log('favorlist:', this.data.favorList);
     let position_id = this.data.favorList[index].position_id;
-    let result = favorService.deleteFavor(position_id);
+    let user = await LogsService.bindOpenId('sa');
+    let user_id = user.bindOpenId;
+    let result = favorService.deleteFavor(position_id, user_id);
     this.loadFavorList();
     if (result) {
       wx.showModal({

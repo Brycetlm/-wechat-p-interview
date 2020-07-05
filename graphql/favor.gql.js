@@ -37,8 +37,8 @@ mutation ($favoriteInput: FavoriteInput!) {
 `
 
 const DELETE_FAVOR = `
-mutation ($favorId: Int!) {
-  deleteFavor(favorId: $favorId)
+mutation ($positionId: Int!, $userId: Int!) {
+  deleteFavor(positionId: $positionId, userId:$userId)
 }
 `
 
@@ -72,11 +72,12 @@ const insertFavoriteRecord = function(favoriteInput) {
   });
 }
 
-const deleteFavor = function(favorId) {
+const deleteFavor = function(positionId, userId) {
   return gql.getGqlObject().mutate({
     mutation: DELETE_FAVOR,
     variables: {
-      favorId: favorId
+      positionId: positionId,
+      userId: userId
     }
   });
 }

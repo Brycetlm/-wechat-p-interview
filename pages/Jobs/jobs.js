@@ -158,7 +158,7 @@ Page({
 
   },
 
-  cancel: function (e) {
+  cancel: async function (e) {
     let index = e.currentTarget.dataset.id;
     console.log(index);
     let target = 'isCollected[' + index + ']';
@@ -167,7 +167,11 @@ Page({
     })
 
     let position_id = this.data.jobsList[index].id;
-    let result = favorService.deleteFavor(position_id);
+    console.log('pos:', position_id);
+    let user = await logservice.bindOpenId('sa');
+    let user_id = user.bindOpenId;
+    console.log('user',user);
+    let result = await favorService.deleteFavor(position_id, user_id);
     if (result) {
       wx.showModal({
         content: '取消收藏成功',

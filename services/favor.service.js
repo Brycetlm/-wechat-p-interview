@@ -14,8 +14,8 @@ const insertFavor = async function(favoriteInput) {
   return gqlFavorService.insertFavoriteRecord(favoriteInput);
 }
 
-const deleteFavor = async function(favorId) {
-  return gqlFavorService.deleteFavor(favorId);
+const deleteFavor = async function(positionId, userId) {
+  return gqlFavorService.deleteFavor(positionId, userId);
 }
 
 module.exports = {
