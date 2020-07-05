@@ -11,6 +11,7 @@ Page({
   data: {
     modalName: null,
     arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
+    dataPay: [[2,3],[3,5],[5,8],[8,12],[12,16],[16,-1]],
     region: ['广东省', '广州市', '海珠区'],
     checkbox: [{
       value: 0,
@@ -44,6 +45,11 @@ Page({
       hot: false,
     }],
     jobsList: null,
+    searchInput: "",
+    filterInput: null,
+    skip: 0,
+    take: 5,
+    isCollected: [],
   },
 
   /**
@@ -102,6 +108,25 @@ Page({
 
   },
 
+  collect: function (e) {
+    console.log(e.currentTarget);
+    let index = e.currentTarget.dataset.id;
+    let target = 'isCollected['+index+']';
+    this.setData({
+      [target]: true 
+    })
+    
+  },
+
+  cancel: function(e) {
+    let index = e.currentTarget.dataset.id;
+    console.log(index);
+    let target = 'isCollected['+index+']';
+    this.setData({
+      [target]: false
+    })
+  },
+
   bindRegionChange: function (e) {
     this.setData({
       region: e.detail.value
@@ -114,10 +139,17 @@ Page({
     })
   },
 
-  getDefaultJobsData: async function () {
-    let data = await jobsService.getDefaultJobsList();
+  ChooseCheckbox: function(e) {
+    console.log(e);
+    let state = !this.data.checkbox[e.currentTarget.dataset.index].checked;
+    this.setData({
+      ['checkbox[' + e.currentTarget.dataset.index + '].checked']: state,
+    })
+  },
+
+  getJobsDetail: async function(data) {
     let result = [];
-    for (let item of data.getDefaultPositions.list) {
+    for (let item of data.list) {
       let company = await companyService.getCompanyInfoById(item.company_id);
       company = company.getCompanyInfoById;
       result.push({
@@ -136,11 +168,56 @@ Page({
     return result;
   },
 
+  getDefaultJobsData: async function () {
+    let data = await jobsService.getDefaultJobsList();
+    return await this.getJobsDetail(data.getDefaultPositions);
+  },
+
+  getFilteredJobsData: async function(searchInput, filterInput, skip, take) {
+    let data = await jobsService.searchFilteredPositions(searchInput, filterInput, skip, take);
+    return await this.getJobsDetail(data.searchFilteredPositions);
+  },
+
   loadDefaultJobsList: async function () {
     const result = await this.getDefaultJobsData();
     this.setData({
       jobsList: result
     })
+  },
+
+  loadFilteredJobsList: async function(searchInput, filterInput, skip, take) {
+    const result = await this.getFilteredJobsData(searchInput, filterInput, skip, take);
+    this.setData({
+      jobsList: result
+    });
+  },
+
+  search: async function(e) {
+    this.setData({
+      searchInput: e.detail.value
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+  },
+
+  filter: async function(e) {
+    let tags = [];
+    for (let item of this.data.checkbox) {
+      if (item.checked) {
+        tags.push(item.name);
+      }
+    }
+    this.setData({
+      filterInput: {
+        salary_min: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][0] * 1000: null,
+        salary_max: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][1] * 1000: null,
+        province: this.data.region[0],
+        city: this.data.region[1],
+        region: this.data.region[2],
+        tag: tags == [] ? tags : null
+      }
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+    this.hideModal();
   },
 
   detail: function (e) {
@@ -161,6 +238,11 @@ Page({
   },
   chooseCheckbox: function () {
 
+  },
+  TapCollection: function() {
+    wx.navigateTo({
+      url: '../collection/collection',
+    })
   },
   bindTapHome: function () {
     // TODO

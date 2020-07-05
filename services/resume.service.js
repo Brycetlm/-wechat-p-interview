@@ -4,6 +4,11 @@ const updateResumeInfo = function(resumeInput) {
   return gqlResumeService.updateResumeInfo(resumeInput);
 }
 
+const getResumeInfoByUserId = function(userId) {
+  return gqlResumeService.getResumeInfoByUserId(userId);
+}
+
 module.exports = {
-  updateResumeInfo: updateResumeInfo
+  updateResumeInfo: updateResumeInfo,
+  getResumeInfoByUserId:getResumeInfoByUserId
 }

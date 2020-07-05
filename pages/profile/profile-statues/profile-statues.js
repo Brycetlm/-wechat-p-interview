@@ -1,18 +1,36 @@
 // pages/profile/profile-statues/profile-statues.js
+const resumeService=require('../../../services/resume.service');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    resumeInfo:null,
   },
+
+//获取简历信息并显示
+//用户申请数据
+getResumeId: async function (id) {
+  let data = await resumeService.getResumeInfoByUserId(id); //调试时使用默认参数1
+  let result=data.getResumeInfoByUserId;
+  this.setData({
+    resumeInfo: result
+  })
+  console.log("resumeInfo");
+  console.log(this.data.resumeInfo);
+  console.log("ppdp");
+  return result;
+
+},
+
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getResumeId(1);
   },
 
   /**
