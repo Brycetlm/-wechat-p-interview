@@ -47,7 +47,9 @@ Page({
         birthday: company.birthday,
         phone: company.phone,
         logo_url: company.logo_url,
-        ...item
+        name: job.getPositionById.name,
+        created_at: job.getPositionById.created_at,
+        updated_at: job.getPositionById.updated_at
       });
     }
     this.setData({
