@@ -5,6 +5,22 @@ const getFavorById = async function(userId) {
   return result;
 }
 
+const getFavorDel = async function(userId) {
+  let result = await gqlFavorService.getFavorDel(userId);
+  return result;
+}
+
+const insertFavor = async function(favoriteInput) {
+  return gqlFavorService.insertFavoriteRecord(favoriteInput);
+}
+
+const deleteFavor = async function(favorId) {
+  return gqlFavorService.deleteFavor(favorId);
+}
+
 module.exports = {
-  getFavorById: getFavorById
+  getFavorById: getFavorById,
+  getFavorDel: getFavorDel,
+  insertFavor: insertFavor,
+  deleteFavor: deleteFavor
 }

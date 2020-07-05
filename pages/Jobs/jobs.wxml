@@ -17,7 +17,7 @@
 	</view>
 	<view class="content"></view>
 	<view class="action">
-		<text class="text-grey favorite-padding-right">0</text>
+		<text class="text-grey favorite-padding-right"></text>
 		<text class="cuIcon-right"></text>
 	</view>
 </view>

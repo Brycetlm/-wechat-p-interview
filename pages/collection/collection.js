@@ -11,7 +11,7 @@ Page({
    */
   data: {
     favorList: null,
-    
+    isCollected: [false],
   },
 
   //自定义函数
@@ -21,23 +21,21 @@ Page({
       url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,
     })
   },
-  cancel: function(e) {
-    
-  },
+
   loadFavorList: async function () {
     let user = await LogsService.bindOpenId('sa');
     let userId = parseInt(user.bindOpenId);
-    console.log('id',userId);
-    let favorList = await favorService.getFavorById(userId);
-    console.log('fav',favorList);
+    console.log('id', userId);
+    let favorList = await favorService.getFavorDel(userId);
+    console.log('fav', favorList);
     let result = []
-    console.log('favorlist',favorList);
-    for (let item of favorList.getFavoriteInfoByUser.list) {
-      console.log('positionid:',item.position_id);
+    console.log('favorlist', favorList);
+    for (let item of favorList.getFavorDel.list) {
+      console.log('positionid:', item.position_id);
       let job = await jobsService.getJobById(item.position_id);
-      console.log('job:',job);
+      console.log('job:', job);
       let company = await companyService.getCompanyInfoById(job.getPositionById.company_id);
-      console.log('company:',company);
+      console.log('company:', company);
       company = company.getCompanyInfoById;
       result.push({
         company_name: company.name,
@@ -57,6 +55,25 @@ Page({
     })
   },
 
+  cancel: function (e) {
+    let index = e.currentTarget.dataset.id;
+
+    console.log('favorlist:', this.data.favorList);
+    let position_id = this.data.favorList[index].position_id;
+    let result = favorService.deleteFavor(position_id);
+    this.loadFavorList();
+    if (result) {
+      wx.showModal({
+        content: '取消收藏成功',
+        showCancel: false,
+      })
+    } else {
+      wx.showModal({
+        content: '取消收藏失败',
+        showCancel: false,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
