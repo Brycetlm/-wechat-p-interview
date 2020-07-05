@@ -12,17 +12,6 @@ Page({
    */
   data: {
     modalName: null,
-<<<<<<< HEAD
-    arrayPay: ['2k-3k', '3k-5k', '5k-8k', '8k-12k', '12k-16k', '大于16k', ],
-    dataPay: [
-      [2, 3],
-      [3, 5],
-      [5, 8],
-      [8, 12],
-      [12, 16],
-      [16, -1]
-    ],
-=======
     isOrderShowed: false,
     ascOrder: false,
     arrayOrder: [{
@@ -40,7 +29,6 @@ Page({
     }],
     arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
     dataPay: [[2,3],[3,5],[5,8],[8,12],[12,16],[16,-1]],
->>>>>>> 47b636a8205cbb084d283e6a837869008ec2f996
     region: ['广东省', '广州市', '海珠区'],
     checkbox: [{
       value: 0,
