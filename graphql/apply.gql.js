@@ -8,7 +8,20 @@ query ($userId: Int!) {
   }
 }
 `
+const DELETE_APPLY = `
+mutation ($applyId: Int!) {
+  deleteApply(applyId: $applyId)
+}
+`
 
+const deleteApply = function(applyId) {
+  return gql.getGqlObject().query({
+    query: DELETE_APPLY,
+    variables: {
+      applyId: applyId
+    }
+  });
+}
 
 const getApplyInfoById = function(userId) {
   return gql.getGqlObject().query({
@@ -41,5 +54,6 @@ query ($userId: Int!) {
 
 module.exports = {
   getApplyInfoById: getApplyInfoById,
-  getApplyInfoByUserId:getApplyInfoByUserId
+  getApplyInfoByUserId:getApplyInfoByUserId,
+  deleteApply:deleteApply
 };

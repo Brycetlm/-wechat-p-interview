@@ -48,6 +48,7 @@ Page({
       })
     }
     else {
+      applyService.deleteApply(1);  //给的测试applyid 1
       this.setData({
         withDraw:"撤销成功！"
       })
