@@ -235,13 +235,13 @@ Page({
     this.hideModal();
   },
 
-  showOrder: function(e) {
+  showOrder: function() {
     this.setData({
       isOrderShowed: !this.data.isOrderShowed
     });
   },
 
-  clearOrder: function(e) {
+  clearOrder: function() {
     for (let index in this.data.arrayOrder) {
       if (this.data.arrayOrder[index].checked) {
         this.setData({
@@ -271,6 +271,7 @@ Page({
       ["filterInput.order_by"]: this.data.arrayOrder[e.currentTarget.dataset.index].value
     });
     this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+    this.showOrder();
   },
 
   detail: function (e) {
