@@ -10,6 +10,21 @@ Page({
    */
   data: {
     modalName: null,
+    isOrderShowed: false,
+    ascOrder: false,
+    arrayOrder: [{
+      value: 'UPDATED_AT',
+      name: '时间',
+      checked: false,
+    }, {
+      value: 'SALARY_MIN',
+      name: '最小工资',
+      checked: false
+    }, {
+      value: 'SALARY_MAX',
+      name: '最大工资',
+      checked: false
+    }],
     arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
     dataPay: [[2,3],[3,5],[5,8],[8,12],[12,16],[16,-1]],
     region: ['广东省', '广州市', '海珠区'],
@@ -46,7 +61,7 @@ Page({
     }],
     jobsList: null,
     searchInput: "",
-    filterInput: null,
+    filterInput: {},
     skip: 0,
     take: 5
   },
@@ -198,6 +213,44 @@ Page({
     });
     this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
     this.hideModal();
+  },
+
+  showOrder: function(e) {
+    this.setData({
+      isOrderShowed: !this.data.isOrderShowed
+    });
+  },
+
+  clearOrder: function(e) {
+    for (let index in this.data.arrayOrder) {
+      if (this.data.arrayOrder[index].checked) {
+        this.setData({
+          ["arrayOrder[" + index + "].checked"]: false
+        });
+      }
+    }
+  },
+
+  switchOrder: function() {
+    this.setData({
+      ascOrder: !this.data.ascOrder
+    });
+    this.setData({
+      ["filterInput.order"]: this.data.ascOrder ? 'ASC' : 'DESC'
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+  },
+
+  selectOrder: function(e) {
+    this.clearOrder();
+    console.log(e);
+    this.setData({
+      ["arrayOrder[" + e.currentTarget.dataset.index + "].checked"]: true
+    });
+    this.setData({
+      ["filterInput.order_by"]: this.data.arrayOrder[e.currentTarget.dataset.index].value
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
   },
 
   detail: function (e) {
