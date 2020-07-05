@@ -38,6 +38,7 @@ Page({
       console.log('company:', company);
       company = company.getCompanyInfoById;
       result.push({
+        position_id: job.getPositionById.id,
         company_name: company.name,
         company_profile: company.profile,
         province: company.province,
@@ -64,7 +65,7 @@ Page({
     let position_id = this.data.favorList[index].position_id;
     let user = await LogsService.bindOpenId('sa');
     let user_id = user.bindOpenId;
-    let result = favorService.deleteFavor(position_id, user_id);
+    let result = await favorService.deleteFavor(position_id, user_id);
     this.loadFavorList();
     if (result) {
       wx.showModal({
