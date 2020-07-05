@@ -112,7 +112,7 @@ Page({
     console.log("id:", id.bindOpenId);
     let result = false;
     try {
-        result = await userService.updateUserInfo({
+      result = await userService.updateUserInfo({
         name: name,
         gender: gender,
         birthday: birth,
