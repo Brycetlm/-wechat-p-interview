@@ -16,7 +16,7 @@
   margin-top: 10rpx;
   min-height: 600rpx;
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   bottom: 120rpx;
   padding: 20rpx 30rpx 20rpx 30rpx;
 }

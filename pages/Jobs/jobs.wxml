@@ -17,18 +17,30 @@
 	</view>
 	<view class="content"></view>
 	<view class="action">
-		<text class="text-grey favorite-padding-right">0</text>
+		<text class="text-grey favorite-padding-right"></text>
 		<text class="cuIcon-right"></text>
 	</view>
 </view>
 
 <view class="cu-bar bg-white push-title-margin">
 	<view class="action">
-		<text>您可能感兴趣的职位</text>
+		<text class="order-margin-right"  bindtap="showOrder">排序</text>
+		<text class="{{isOrderShowed ? 'cuIcon-triangleupfill' : 'cuIcon-triangledownfill'}}"></text>
+		<text class="order-margin-left" bindtap="switchOrder">{{ascOrder ? '升序' : '降序'}}</text>
 	</view>
 	<view class="content"></view>
 	<view class="action" bindtap="showModal">
 		<text class="cuIcon-filter"></text>
+	</view>
+</view>
+
+<view class="cu-bar bg-white order-margin-bottom" bindtap="selectOrder" data-index="{{index}}" wx:for="{{arrayOrder}}" wx:if="{{isOrderShowed}}">
+	<view class="action">
+		<text class="{{item.checked ? 'text-blue' : 'text-black'}}">{{item.name}}</text>
+	</view>
+	<view class="content"></view>
+	<view class="action" wx:if="{{item.checked}}">
+		<text class="cuIcon-check"></text>
 	</view>
 </view>
 

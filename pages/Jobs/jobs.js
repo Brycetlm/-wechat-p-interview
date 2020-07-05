@@ -2,6 +2,8 @@
 
 const jobsService = require('../../services/jobs.service');
 const companyService = require('../../services/company.service');
+const favorService = require('../../services/favor.service');
+const logservice = require('../../services/logs.service');
 
 Page({
 
@@ -10,6 +12,21 @@ Page({
    */
   data: {
     modalName: null,
+    isOrderShowed: false,
+    ascOrder: false,
+    arrayOrder: [{
+      value: 'UPDATED_AT',
+      name: '时间',
+      checked: false,
+    }, {
+      value: 'SALARY_MIN',
+      name: '最小工资',
+      checked: false
+    }, {
+      value: 'SALARY_MAX',
+      name: '最大工资',
+      checked: false
+    }],
     arrayPay:['2k-3k','3k-5k','5k-8k','8k-12k','12k-16k','大于16k',],
     dataPay: [[2,3],[3,5],[5,8],[8,12],[12,16],[16,-1]],
     region: ['广东省', '广州市', '海珠区'],
@@ -46,7 +63,7 @@ Page({
     }],
     jobsList: null,
     searchInput: "",
-    filterInput: null,
+    filterInput: {},
     skip: 0,
     take: 5,
     isCollected: [],
@@ -108,23 +125,65 @@ Page({
 
   },
 
-  collect: function (e) {
+  collect: async function (e) {
     console.log(e.currentTarget);
     let index = e.currentTarget.dataset.id;
-    let target = 'isCollected['+index+']';
+    let target = 'isCollected[' + index + ']';
     this.setData({
-      [target]: true 
+      [target]: true
     })
-    
+    console.log('joblist:', this.data.jobsList);
+    console.log('cid:', this.data.jobsList[index].id);
+    let position_id = this.data.jobsList[index].id;
+    let user_id = await logservice.bindOpenId('sa');
+    console.log('uid:', user_id.bindOpenId);
+    console.log("pid:", position_id);
+    let result = await favorService.insertFavor({
+      user_id: user_id.bindOpenId,
+      position_id: position_id
+    })
+    console.log('result:', result);
+
+    if (result) {
+      wx.showModal({
+        content: '收藏成功',
+        showCancel: false,
+      })
+    } else {
+      wx.showModal({
+        content: '收藏失败',
+        showCancel: false,
+      })
+    }
+
   },
 
-  cancel: function(e) {
+  cancel: async function (e) {
     let index = e.currentTarget.dataset.id;
     console.log(index);
-    let target = 'isCollected['+index+']';
+    let target = 'isCollected[' + index + ']';
     this.setData({
       [target]: false
     })
+
+    let position_id = this.data.jobsList[index].id;
+    console.log('pos:', position_id);
+    let user = await logservice.bindOpenId('sa');
+    let user_id = user.bindOpenId;
+    console.log('user',user);
+    let result = await favorService.deleteFavor(position_id, user_id);
+    if (result) {
+      wx.showModal({
+        content: '取消收藏成功',
+        showCancel: false,
+      })
+    } else {
+      wx.showModal({
+        content: '取消收藏失败',
+        showCancel: false,
+      })
+    }
+
   },
 
   bindRegionChange: function (e) {
@@ -133,13 +192,13 @@ Page({
     })
   },
 
-  bindPayChange: function(e) {
+  bindPayChange: function (e) {
     this.setData({
-        indexPay: e.detail.value
+      indexPay: e.detail.value
     })
   },
 
-  ChooseCheckbox: function(e) {
+  ChooseCheckbox: function (e) {
     console.log(e);
     let state = !this.data.checkbox[e.currentTarget.dataset.index].checked;
     this.setData({
@@ -147,7 +206,7 @@ Page({
     })
   },
 
-  getJobsDetail: async function(data) {
+  getJobsDetail: async function (data) {
     let result = [];
     for (let item of data.list) {
       let company = await companyService.getCompanyInfoById(item.company_id);
@@ -173,7 +232,7 @@ Page({
     return await this.getJobsDetail(data.getDefaultPositions);
   },
 
-  getFilteredJobsData: async function(searchInput, filterInput, skip, take) {
+  getFilteredJobsData: async function (searchInput, filterInput, skip, take) {
     let data = await jobsService.searchFilteredPositions(searchInput, filterInput, skip, take);
     return await this.getJobsDetail(data.searchFilteredPositions);
   },
@@ -185,21 +244,21 @@ Page({
     })
   },
 
-  loadFilteredJobsList: async function(searchInput, filterInput, skip, take) {
+  loadFilteredJobsList: async function (searchInput, filterInput, skip, take) {
     const result = await this.getFilteredJobsData(searchInput, filterInput, skip, take);
     this.setData({
       jobsList: result
     });
   },
 
-  search: async function(e) {
+  search: async function (e) {
     this.setData({
       searchInput: e.detail.value
     });
     this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
   },
 
-  filter: async function(e) {
+  filter: async function (e) {
     let tags = [];
     for (let item of this.data.checkbox) {
       if (item.checked) {
@@ -208,8 +267,8 @@ Page({
     }
     this.setData({
       filterInput: {
-        salary_min: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][0] * 1000: null,
-        salary_max: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][1] * 1000: null,
+        salary_min: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][0] * 1000 : null,
+        salary_max: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][1] * 1000 : null,
         province: this.data.region[0],
         city: this.data.region[1],
         region: this.data.region[2],
@@ -218,6 +277,45 @@ Page({
     });
     this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
     this.hideModal();
+  },
+
+  showOrder: function() {
+    this.setData({
+      isOrderShowed: !this.data.isOrderShowed
+    });
+  },
+
+  clearOrder: function() {
+    for (let index in this.data.arrayOrder) {
+      if (this.data.arrayOrder[index].checked) {
+        this.setData({
+          ["arrayOrder[" + index + "].checked"]: false
+        });
+      }
+    }
+  },
+
+  switchOrder: function() {
+    this.setData({
+      ascOrder: !this.data.ascOrder
+    });
+    this.setData({
+      ["filterInput.order"]: this.data.ascOrder ? 'ASC' : 'DESC'
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+  },
+
+  selectOrder: function(e) {
+    this.clearOrder();
+    console.log(e);
+    this.setData({
+      ["arrayOrder[" + e.currentTarget.dataset.index + "].checked"]: true
+    });
+    this.setData({
+      ["filterInput.order_by"]: this.data.arrayOrder[e.currentTarget.dataset.index].value
+    });
+    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+    this.showOrder();
   },
 
   detail: function (e) {
@@ -239,7 +337,7 @@ Page({
   chooseCheckbox: function () {
 
   },
-  TapCollection: function() {
+  TapCollection: function () {
     wx.navigateTo({
       url: '../collection/collection',
     })
