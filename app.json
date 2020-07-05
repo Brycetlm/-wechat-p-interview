@@ -11,7 +11,8 @@
     "pages/profile/profile-statues/profile-statues",
     "pages/job-detail/job-detail",
     "pages/my/personal/personal",
-    "pages/my/contact/contact"
+    "pages/my/contact/contact",
+    "pages/collection/collection"
   ],
   "window": {
     "backgroundTextStyle": "light",
