@@ -241,14 +241,23 @@ Page({
   loadDefaultJobsList: async function () {
     const result = await this.getDefaultJobsData();
     this.setData({
-      jobsList: result
+      jobsList: this.format(result)
     })
+  },
+
+  format: function(data) {
+    for (let item of data) {
+      let date = new Date(item.updated_at);
+      let formattedDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+      item.updated_at = formattedDate;
+    }
+    return data;
   },
 
   loadFilteredJobsList: async function (searchInput, filterInput, skip, take) {
     const result = await this.getFilteredJobsData(searchInput, filterInput, skip, take);
     this.setData({
-      jobsList: result
+      jobsList: this.format(result)
     });
   },
 
