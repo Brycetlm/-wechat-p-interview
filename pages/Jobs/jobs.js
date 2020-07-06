@@ -204,6 +204,7 @@ Page({
     this.setData({
       ['checkbox[' + e.currentTarget.dataset.index + '].checked']: state,
     })
+    console.log('checkbox[' + e.currentTarget.dataset.index + '].checked set to ' + state);
   },
 
   getJobsDetail: async function (data) {
@@ -265,18 +266,27 @@ Page({
         tags.push(item.name);
       }
     }
+    console.log(this.data.indexPay);
     this.setData({
       filterInput: {
-        salary_min: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][0] * 1000 : null,
-        salary_max: this.data.indexPay !== -1 ? this.data.dataPay[this.data.indexPay][1] * 1000 : null,
+        salary_min: this.data.indexPay ? this.data.dataPay[this.data.indexPay][0] * 1000 : null,
+        salary_max: this.data.indexPay ? this.data.dataPay[this.data.indexPay][1] * 1000 : null,
         province: this.data.region[0],
         city: this.data.region[1],
         region: this.data.region[2],
-        tag: tags == [] ? tags : null
+        tag: tags.length ? tags : null
       }
     });
-    this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
-    this.hideModal();
+    try {
+      this.loadFilteredJobsList(this.data.searchInput, this.data.filterInput, this.data.skip, this.data.take);
+      this.hideModal();
+    } catch(err) {
+      console.log(err);
+      wx.showModal({
+        content: '筛选失败！',
+        showCancel: false,
+      })
+    }
   },
 
   showOrder: function() {
