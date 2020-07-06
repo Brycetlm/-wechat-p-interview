@@ -128,7 +128,7 @@ Page({
       });
     } catch (e) {
       wx.showModal({
-        content: '保存失败！',
+        content: '保存失败！检查是否已经填完所有信息',
         showCancel: false,
       })
       return result;
