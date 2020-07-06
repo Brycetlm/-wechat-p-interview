@@ -26,7 +26,7 @@
 				<view>
 					<text class="cuIcon-favorfill" bindtap="cancel" data-id="{{index}}"></text>
 				</view>
-				<view class="margin-top" bindtap="detail">
+				<view class="margin-top" bindtap="detail" data-id="{{item.id}}">
 					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
 				</view>

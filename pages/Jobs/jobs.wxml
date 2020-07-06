@@ -98,7 +98,7 @@
 					<text class="cuIcon-favorfill" wx:if="{{isCollected[index]==true}}" bindtap="cancel" data-id="{{index}}"></text>
 					<text class="cuIcon-favor" wx:else="{{isCollected[index]==false}}" bindtap="collect" data-id="{{index}}"></text>
 				</view>
-				<view class="margin-top" bindtap="detail">
+				<view class="margin-top" bindtap="detail" data-id="{{item.id}}">
 					<text class="text-grey flex-apply-text">详细</text>
 					<text class="cuIcon-right"></text>
 				</view>
