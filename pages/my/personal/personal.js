@@ -110,6 +110,25 @@ Page({
     let region = this.data.region[2];
     let id = await logService.bindOpenId('sa');
     console.log("id:", id.bindOpenId);
+
+    //正则验证
+    let phoneReg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    let mailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    if (!phoneReg.test(phone)) {
+      wx.showModal({
+        content: '保存失败！手机输入格式错误！',
+        showCancel: false,
+      })
+      return false
+    }
+    if (!mailReg.test(mail)) {
+      wx.showModal({
+        content: '保存失败！邮箱输入格式错误！',
+        showCancel: false,
+      })
+      return false
+    }
+
     let result = false;
     try {
       result = await userService.updateUserInfo({
