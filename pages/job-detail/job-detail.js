@@ -19,6 +19,7 @@ Page({
     this.onLoad();
   },
   onLoad: async function (options) {
+    console.log(options.id);
     let job = await this.getJobInfoById(options.id);
     this.setData({
       jobInfo: job,
