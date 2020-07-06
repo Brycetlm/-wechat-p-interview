@@ -118,6 +118,7 @@ Page({
   },
 
   detail: function (e) {
+    console.log("dataset");
     console.log(e.currentTarget.dataset);
     wx.navigateTo({
       url: '../job-detail/job-detail?id=' + e.currentTarget.dataset.id,

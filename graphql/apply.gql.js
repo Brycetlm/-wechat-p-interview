@@ -14,6 +14,21 @@ mutation ($applyId: Int!) {
 }
 `
 
+//确定之后插入新apply
+const INSERT_APPLY = `
+mutation ($applyInput: ApplyInput!) {
+  insertApplyRecord(applyInput: $applyInput)
+}
+`
+const insertApply = function(applyInput) {
+  return gql.getGqlObject().query({
+    query: INSERT_APPLY,
+    variables: {
+      applyInput: applyInput
+    }
+  });
+}
+
 const deleteApply = function(applyId) {
   return gql.getGqlObject().query({
     query: DELETE_APPLY,
@@ -55,5 +70,6 @@ query ($userId: Int!) {
 module.exports = {
   getApplyInfoById: getApplyInfoById,
   getApplyInfoByUserId:getApplyInfoByUserId,
-  deleteApply:deleteApply
+  deleteApply:deleteApply,
+  insertApply:insertApply
 };

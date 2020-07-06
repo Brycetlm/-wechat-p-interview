@@ -63,7 +63,7 @@ bindWorkChange: function(e) {
 },
 
 submitResume: async function() {
-  console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
+  //console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
   let result = await resumeService.updateResumeInfo({
     name: this.data.name,
     user_id: 1,

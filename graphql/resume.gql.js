@@ -29,7 +29,8 @@ query ($userId: Int!) {
     exp,
     province,
     city,
-    region
+    region,
+    id
   }
 }
 `;

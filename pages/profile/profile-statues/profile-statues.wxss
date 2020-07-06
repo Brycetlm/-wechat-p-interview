@@ -1,1 +1,5 @@
 /* pages/profile/profile-statues/profile-statues.wxss */
+.not-show
+{
+  width: 0rpx;
+}

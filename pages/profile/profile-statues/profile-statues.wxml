@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-blue" bindtap="setShow" isBack="{{true}}">
 	<view slot="content">我的简历</view>
 </cu-custom>
 
@@ -12,6 +12,6 @@
 			<view class='cu-tag radius bg-green' style="margin-top:25%;margin-left:3%;position:absolute;">工作地区：{{item.province}},{{item.city}},{{item.region}}</view>
 			<!-- <view class='cu-tag radius bg-green' style="margin-top:24rpx;margin-left:3%">工作经验：{{item.exp}}年</view> -->
 
-  		<button class="cu-btn bg-blue"  style="width:20%;left:70%">确定</button>
+  		<button wx:if="{{showView}}" class="cu-btn bg-green" data-reid="{{item.id}}" bindtap="confirmResume"  style="width:20%;left:70%">{{confirm}}</button>
   </view>	
 </view>

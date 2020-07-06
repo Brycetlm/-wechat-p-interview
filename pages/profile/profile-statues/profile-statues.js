@@ -1,5 +1,6 @@
 // pages/profile/profile-statues/profile-statues.js
 const resumeService=require('../../../services/resume.service');
+const applyService=require('../../../services/apply.service');
 Page({
 
   /**
@@ -7,8 +8,25 @@ Page({
    */
   data: {
     resumeInfo:null,
+    confirm:"确定",
+    resumeId:1,
+    showView:+1,
   },
 
+  // setConfirm:function()
+  // {
+  //   this.setData({
+  //     confirm:this.options.confirm
+  //   })
+  // },
+
+  // rollBack:function(options)
+  // {
+  //   this.setData({
+  //     showView:options.showView
+  //   })
+    
+  // },
 //获取简历信息并显示
 //用户申请数据
 getResumeId: async function (id) {
@@ -23,13 +41,44 @@ getResumeId: async function (id) {
   return result;
 
 },
+getResumeId_2:function(resumeId){
+ 
+},
 
+setShow:function()
+{
+  getApp().globalData.showBnt=true;
+},
 
+confirmResume: async function(e) {
+  //console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
+  //console.log(this.options.id);
+  console.log("resumeid");
+  console.log(e);
+  this.setData({
+    resumeId:e.currentTarget.dataset.reid,
+  })
+  let result = await applyService.insertApply({
+    user_id: 1,
+    position_id:+this.options.id,
+    resume_id:+this.data.resumeId,
+  });
+  console.log(this.data.resumeId);
+  wx.navigateBack();
+},
 
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad: function (options) {
+    this.setData({
+      showView:+options.showView,
+    })
+    console.log(options);
+    console.log(this.data.showView);
+    // var app=getApp();
+    // console.log(app.globalData.showBnt);
     this.getResumeId(1);
   },
 
@@ -37,7 +86,6 @@ getResumeId: async function (id) {
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
@@ -58,7 +106,7 @@ getResumeId: async function (id) {
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+  //this.rollBack();
   },
 
   /**

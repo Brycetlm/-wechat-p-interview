@@ -20,14 +20,16 @@ Page({
     text1_2: "投递记录",
     text1_3: "收藏",
     text1_4: "联系我们",
+    text1_5:"我的简历",
   },
 
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getApp().globalData.showBnt=!getApp().globalData.showBnt;
   },
 
   /**
@@ -37,9 +39,9 @@ Page({
     let url = await updateService.getAvatar('sa');
     let name = await updateService.getName('sa');
     let email = await updateService.getMail('sa');
-    console.log("my:url:", url);
-    console.log("my:name:",name);
-    console.log("my:email:",email);
+    // console.log("my:url:", url);
+    // console.log("my:name:",name);
+    // console.log("my:email:",email);
     this.setData({
       img: url,
       text_name: name,
@@ -53,7 +55,7 @@ Page({
    */
   onShow: function () {
 
-  },
+    },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -66,7 +68,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -111,6 +113,12 @@ Page({
     })
   },
 
+  naviToMyResume:function()
+  {
+    wx.navigateTo({
+      url:'../profile/profile-statues/profile-statues?showView=0',
+    })
+  },
   bindTapHome: function () {
     // TODO
     wx.redirectTo({
