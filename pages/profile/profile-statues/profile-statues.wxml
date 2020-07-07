@@ -13,6 +13,30 @@
 			<!-- <view class='cu-tag radius bg-green' style="margin-top:24rpx;margin-left:3%">工作经验：{{item.exp}}年</view> -->
 
   		<button wx:if="{{showView}}" class="cu-btn bg-green" data-reid="{{item.id}}" bindtap="confirmResume"  style="width:20%;left:70%">{{confirm}}</button>
-			<button wx:if="{{!showView}}" class="cu-btn bg-green" data-reid="{{item.id}}" bindtap="deleteResume"  style="width:25%;left:70%;margin-top:100rpx">删除简历</button>
-  </view>	
+			<view data-reid="{{item.id}}" bindtap="getid">
+			<button wx:if="{{!showView}}" class="cu-btn bg-red shadow" data-target="DialogModal1"  bindtap="showModal"   style="width:25%;left:70%;margin-top:100rpx">删除简历</button>
+			</view>	
+	</view>	
+</view>
+
+
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">简历删除</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      确认删除简历么？删除之后不可恢复
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal" >取消</button>
+        <button class="cu-btn bg-green margin-left"  bindtap="deleteResume">确定</button>
+
+      </view>
+    </view>
+  </view>
 </view>

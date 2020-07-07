@@ -11,6 +11,8 @@ Page({
     confirm:"确定",
     resumeId:1,
     showView:+1,
+    modalName:null,
+    deleteid:null,
   },
 
   // setConfirm:function()
@@ -43,19 +45,42 @@ getResumeId: async function (id) {
   console.log(result);
   
   this.setData({
-    resumeInfo: result
+    resumeInfo: result,
   })
   return result;
 
 },
 
+getid:function(e)
+{
+  this.setData({
+    deleteid: e.currentTarget.dataset.reid,
+  })
+  
+  console.log(e.currentTarget.dataset.reid);
+},
+
 deleteResume:async function(e)
 {
+  this.setData({
+    modalName: null
+  })
   console.log(e.currentTarget.dataset.reid);
-  await resumeService.deleteResume(e.currentTarget.dataset.reid);
+  await resumeService.deleteResume(this.data.deleteid);
   this.onLoad(this.options);
 },
 
+showModal(e) {
+  this.setData({
+    modalName: e.currentTarget.dataset.target
+  })
+},
+
+hideModal(e) {
+  this.setData({
+    modalName: null
+  })
+},
 confirmResume: async function(e) {
   //console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
   //console.log(this.options.id);
