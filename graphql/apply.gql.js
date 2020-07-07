@@ -30,8 +30,8 @@ const insertApply = function(applyInput) {
 }
 
 const deleteApply = function(applyId) {
-  return gql.getGqlObject().query({
-    query: DELETE_APPLY,
+  return gql.getGqlObject().mutate({
+    mutation: DELETE_APPLY,
     variables: {
       applyId: applyId
     }

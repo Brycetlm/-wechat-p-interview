@@ -32,26 +32,35 @@ Page({
 getResumeId: async function (id) {
   let data = await resumeService.getResumeInfoByUserId(id); //调试时使用默认参数1
   let result=data.getResumeInfoByUserId;
+  // for(var i=0;i<result.length;i++)
+  // {
+  //   if(result[i].is_deleted==1)
+  //   {
+  //     result.splice(i,1);
+  //   }
+  // }
+ 
+  console.log(result);
+  
   this.setData({
     resumeInfo: result
   })
-  // console.log("resumeInfo");
-  // console.log(this.data.resumeInfo);
-  // console.log("ppdp");
   return result;
 
 },
 
-setShow:function()
+deleteResume:async function(e)
 {
-  getApp().globalData.showBnt=true;
+  console.log(e.currentTarget.dataset.reid);
+  await resumeService.deleteResume(e.currentTarget.dataset.reid);
+  this.onLoad(this.options);
 },
 
 confirmResume: async function(e) {
   //console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
   //console.log(this.options.id);
-  console.log("resumeid");
-  console.log(e);
+  // console.log("resumeid");
+  // console.log(e);
   this.setData({
     resumeId:e.currentTarget.dataset.reid,
   })

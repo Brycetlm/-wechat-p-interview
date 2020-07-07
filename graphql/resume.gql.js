@@ -30,7 +30,8 @@ query ($userId: Int!) {
     province,
     city,
     region,
-    id
+    id,
+    is_deleted,
   }
 }
 `;
@@ -44,9 +45,25 @@ const getResumeInfoByUserId = function(userId) {
     }
   });
 }
+const DELETE_RESUME = `
+mutation ($resumeId: Int!) {
+  deleteResumeInfo (resumeId: $resumeId) 
+ 
+}
+`
 
+const deleteResume = function(resumeId) {
+  //console.log(resumeId);
+  return gql.getGqlObject().mutate({
+    mutation: DELETE_RESUME,
+    variables: {
+      resumeId: resumeId
+    }
+  });
+}
 
 module.exports = {
   updateResumeInfo: updateResumeInfo,
-  getResumeInfoByUserId:getResumeInfoByUserId
+  getResumeInfoByUserId:getResumeInfoByUserId,
+  deleteResume:deleteResume
 }

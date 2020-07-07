@@ -39,7 +39,6 @@ loadApplyList: async function (id) {
 
   for(var i=0;i<result.length;i++)
   {
-    //console.log(result[i].state);
     if(result[i].state=="ACCEPT"){result[i].state="已通过";}
     if(result[i].state=="POST"){result[i].state="已投递";}
     if(result[i].state=="REJECT"){result[i].state="已拒绝";}
