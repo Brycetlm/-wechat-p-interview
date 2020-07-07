@@ -14,7 +14,8 @@
 
   		<button wx:if="{{showView}}" class="cu-btn bg-green" data-reid="{{item.id}}" bindtap="confirmResume"  style="width:20%;left:70%">{{confirm}}</button>
 			<view data-reid="{{item.id}}" bindtap="getid">
-			<button wx:if="{{!showView}}" class="cu-btn bg-red shadow" data-target="DialogModal1"  bindtap="showModal"   style="width:25%;left:70%;margin-top:100rpx">删除简历</button>
+			<button wx:if="{{!showView}}" class="cu-btn bg-red shadow" data-target="DialogModal1"  bindtap="showModal"   style="width:25%;left:70%;margin-top:50rpx">删除简历</button>
+			<button wx:if="{{!showView}}" class="cu-btn bg-green shadow"  bindtap="navigator" style="width:25%;left:70%;margin-top:150rpx;position:absolute">修改简历</button>
 			</view>	
 	</view>	
 </view>

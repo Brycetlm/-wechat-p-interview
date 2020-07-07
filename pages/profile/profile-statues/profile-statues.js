@@ -60,6 +60,13 @@ getid:function(e)
   console.log(e.currentTarget.dataset.reid);
 },
 
+navigator:function()
+{
+  wx.navigateTo({
+    url: '../form/form',
+  })
+},
+
 deleteResume:async function(e)
 {
   this.setData({
