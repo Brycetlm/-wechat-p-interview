@@ -3,6 +3,7 @@ const jobsService = require('../../services/jobs.service');
 const companyService = require('../../services/company.service');
 const updateService = require('../../services/update.service');
 const recommendService = require('recommend');
+const positionService = require('../../services/position.service');
 
 Page({
 
@@ -34,7 +35,7 @@ Page({
    */
   onLoad: async function (options) {
     
-    recommendService.match();
+    //recommendService.match();
     
   },
 
@@ -42,11 +43,47 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: async function () {
-    try {
+    var positionNumber=10;   //对比position的数量
+
+    //规范position查询数量，以免超过数据库position数量
+    let number=await positionService.countPosition();
+    number=number.countPosition;
+    if(positionNumber>number){positionNumber=number;}
+
+   
+    //推荐信息
+    var count=1;
+    var showCount=0;
+    let jobsInfo=[];
+    while(count<positionNumber)  //搜索数据库中的10个职位推荐 可设置  最后这些设置都应该被放到globaldata里
+    {
+      
+      //console.log(recommendService.match(count));
+      var temp=await recommendService.match(count);
+      if(temp!=0)
+      {
+      //console.log(temp);
+      jobsInfo.push({
+        ...temp[0]
+      })
+      //console.log(jobsInfo);
+      showCount=showCount+1;
+       }
+       this.setData({
+        jobsList:jobsInfo,
+      })
+      //console.log(this.data.jobsList);
+       count=count+1;
+    }
+    if(showCount==0)
+    {
       this.loadDefaultJobsList();
+    }
+    try {
+      
       let url = await updateService.getAvatar('sa');
       let name = await updateService.getName('sa');
-      console.log("main:",url);
+      //console.log("main:",url);
       this.setData({
         img: url,
         name: name,
@@ -94,10 +131,13 @@ Page({
 
   getDefaultJobsData: async function () {
     let data = await jobsService.getDefaultJobsList();
+    //console.log(data);
     let result = [];
-    for (let item of data.getDefaultPositions.list) {
-      let company = await companyService.getCompanyInfoById(item.company_id);
+    //for (let item of data.getDefaultPositions.list) {
+      var positionInfo=data.getDefaultPositions.list[0];
+      let company = await companyService.getCompanyInfoById(positionInfo.company_id);
       company = company.getCompanyInfoById;
+      console.log(company);
       result.push({
         company_name: company.name,
         company_profile: company.profile,
@@ -108,16 +148,20 @@ Page({
         birthday: company.birthday,
         phone: company.phone,
         logo_url: company.logo_url,
-        ...item
+        name:positionInfo.name,
+        updated_at:positionInfo.updated_at,
+        id:positionInfo.id,
+        //...item
       });
-    }
+    //}
     return result;
   },
 
   loadDefaultJobsList: async function () {
     const result = await this.getDefaultJobsData();
+    console.log(result);
     this.setData({
-      jobsList: result
+      jobsList: result,
     })
   },
 

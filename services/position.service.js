@@ -7,6 +7,12 @@ const getPositionById = function(positionId) {
   return result;
 }
 
+const countPosition = function() {
+  const result = gqlLogsService.countPosition();
+  return result;
+}
+
 module.exports = {
-  getPositionById:getPositionById
+  getPositionById:getPositionById,
+  countPosition:countPosition
 }

@@ -9,32 +9,38 @@
 
 <view class="shadow-margin"></view>
 
-<view class="text-center bg-white" style="height:100rpx" >
-	<view class="action" >
-		<text style="font-size:40rpx" bindtap="onToProcess" >申请追踪</text>
-			<!-- <button class="cu-btn bg-blue" bindtap="onToProcess" >开始填写</button> -->
-	</view>
+
+
+<view class="bg-white text-center" style="height:80rpx;position:relative;">
+	<text class=" bg-white " style="margin-left:3%" bindtap="onToProcess">申请追踪</text>
 </view>
 
 <view class="shadow-margin"></view>
 
 <view class="new-resume-bg">
-	<text style="font-size:40rpx;font-weight:600;margin-top:2%;margin-left:3%;width:100%;height:17%">填写新的简历</text>
+	<view class="bg-white text-center" style="height:80rpx;position:relative;width:50%">
+		<text class=" bg-white " style="margin-left:3%" bindtap="onToProcess">新建简历</text>
+	</view>
 	<view class="new-resume-fullfill" > 
 	<button class="cu-btn bg-blue" bindtap="onToForm" >开始填写</button>
 	<view class="center-padding"><text >先填写基本资料，然后获取简历模板，或者以空白简历开始填写</text></view>
 	</view>
 </view>
 
-<view class="shadow-margin"></view>
+<!-- <view class="shadow-margin"></view> -->
 
-<text style="font-size:40rpx;font-weight:600;margin-top:1%;margin-left:3%;width:100%;height:17%">我的申请</text>
+<!-- <text style="font-size:40rpx;font-weight:600;margin-top:1%;margin-left:3%;width:100%;height:17%">我的申请</text> -->
+<view class="shadow-marginbg-black"style="width:80%;height:20rpx;position:relative"></view>
+<view class="bg-white text-center" style="height:80rpx;position:relative;">
+	<text class=" bg-white " style="margin-left:3%">我的申请</text>
+</view>
+
 <!-- 申请详情 -->
 <view class="apply-bg" wx:for="{{applyList}}" style="position:relative">
-	<view class="shadow-margin bg-white"style="width:100%;height:30rpx;position:relative"></view>
-	<!-- <view class="shadow-margin"style="width:100%;height:14rpx;position:relative"></view> -->
+	<!-- <view class="shadow-margin bg-white"style="width:100%;height:30rpx;position:relative"></view> -->
+	<view class="shadow-margin"style="width:100%;height:6rpx;position:relative"></view>
 	<view class="bg-white" style="width:100%;height:120rpx;position:absolute;margin-top:60rpx" >
-			<text style="position:relative;fon-size:30;margin-left:3%;margin-top:8rpx;font-weight:600">申请\n</text>
+			<text style="position:relative;fon-size:30;margin-left:3%;margin-top:8rpx;font-weight:600">申请{{item.id}}\n</text>
 			<view class='cu-tag radius bg-blue' style="margin-left:3%;width:120rpx;height:40rpx;margin-top:3%">{{item.state}}</view>
 			<view style="right:5%;width:300rpx;position:absolute;margin-top:80rpx;z-index:2">{{item.created_at}}</view>
 	</view>
@@ -44,7 +50,7 @@
   </view>
 </view>
 
-<view style="position:relative;margin-bottom:100rpx;width:100%;height:50rpx"></view>
+<view style="position:relative;margin-bottom:100rpx;width:100%;height:30rpx"></view>
 
 
 
