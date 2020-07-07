@@ -10,8 +10,8 @@ Page({
 
   onToStatues:function(e)
   {
-    console.log("da id");
-    console.log(this.data.job.id);
+    // console.log("da id");
+    // console.log(this.data.job.id);
     wx.navigateTo({
       url: '../profile/profile-statues/profile-statues?id='+this.data.job.id+'&showView=1',
     })
@@ -22,7 +22,7 @@ Page({
     this.onLoad();
   },
   onLoad: async function (options) {
-    console.log(options.id);
+    // console.log(options.id);
     let job = await this.getJobInfoById(options.id);
     this.setData({
       jobInfo: job,
@@ -34,8 +34,8 @@ Page({
     this.setData({
       job:job,
     })
-    console.log("jb");
-    console.log(job);
+    // console.log("jb");
+    // console.log(job);
     let company = await companyService.getCompanyInfoById(job.company_id);
     company = company.getCompanyInfoById;
     return {

@@ -2,9 +2,11 @@
 const jobsService = require('../../services/jobs.service');
 const companyService = require('../../services/company.service');
 const updateService = require('../../services/update.service');
+const recommendService = require('recommend');
 
 Page({
 
+  
   /**
    * 页面的初始数据
    */
@@ -30,8 +32,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: async function (options) {
+    
+    recommendService.match();
+    
   },
 
   /**

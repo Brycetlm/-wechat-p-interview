@@ -6,6 +6,8 @@ query ($positionId: Int!) {
   {
     name,
     company_id,
+    salary_min,
+    salary_max,
   }
 }
 `;

@@ -35,14 +35,11 @@ getResumeId: async function (id) {
   this.setData({
     resumeInfo: result
   })
-  console.log("resumeInfo");
-  console.log(this.data.resumeInfo);
-  console.log("ppdp");
+  // console.log("resumeInfo");
+  // console.log(this.data.resumeInfo);
+  // console.log("ppdp");
   return result;
 
-},
-getResumeId_2:function(resumeId){
- 
 },
 
 setShow:function()
