@@ -106,7 +106,7 @@ Page({
       showCount=showCount+1;
        }
        this.setData({
-        jobsList:jobsInfo,
+        jobsList:this.format(jobsInfo)
       })
       //console.log(this.data.jobsList);
        count=count+1;
@@ -187,8 +187,17 @@ Page({
     const result = await this.getDefaultJobsData();
     console.log(result);
     this.setData({
-      jobsList: result,
+      jobsList: this.format(result)
     })
+  },
+
+  format: function(data) {
+    for (let item of data) {
+      let date = new Date(item.updated_at);
+      let formattedDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+      item.updated_at = formattedDate;
+    }
+    return data;
   },
 
   detail: function (e) {

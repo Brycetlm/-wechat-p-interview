@@ -73,6 +73,19 @@
   margin-right: 5rpx;
 }
 
+.cu-modal .cu-dialog .cu-list .cu-form-group {
+  background-color: #f8f8f8;
+}
+
 .order-margin-left {
   margin-left: 5rpx;
+}
+
+.cu-btn.lg.position-text-xs {
+  font-size: 24rpx;
+}
+
+.cu-modal .cu-dialog .cu-list .form-title {
+  margin-left: 30rpx;
+  font-size: 30rpx;
 }

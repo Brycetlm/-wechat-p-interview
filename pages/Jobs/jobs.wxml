@@ -59,12 +59,12 @@
 			<view class="form-title">职位类型</view>
 			<view class="grid col-2 padding-sm filter-button-area">
 				<view wx:for="{{checkbox}}" wx:for-index="index" wx:for-item="item" class="padding-xs" :key="index">
-					<button class="text-xs cu-btn lg block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" :data-value="item.value" data-index="{{index}}"> {{item.name}}
+					<button class="cu-btn lg position-text-xs block {{item.checked?'bg-blue':'line-blue'}}" bindtap="ChooseCheckbox" :data-value="item.value" data-index="{{index}}"> {{item.name}}
 					</button>
 				</view>
 			</view>
 			<view class="cu-form-group">
-				<view class="section__title">期望工作地点</view>
+				<view class="title">期望工作地点</view>
 				<picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
 					<view class="picker">
 						{{region[0]}}，{{region[1]}}，{{region[2]}}
@@ -73,8 +73,8 @@
 			</view>
 
 			<view>
-				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="filter">确认</button>
-				<button class="cu-btn lg block line-blue drawer-confirm-button" bindtap="hideModal">取消</button>
+				<button class="cu-btn lg position-text-xs block line-blue drawer-confirm-button" bindtap="filter">确认</button>
+				<button class="cu-btn lg position-text-xs block line-blue drawer-confirm-button" bindtap="hideModal">取消</button>
 			</view>
 		</view>
 	</view>
