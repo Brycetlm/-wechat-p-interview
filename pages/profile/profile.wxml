@@ -11,8 +11,8 @@
 
 
 
-<view class="bg-white text-center" style="height:80rpx;position:relative;">
-	<text class=" bg-white " style="margin-left:3%" bindtap="onToProcess">申请追踪</text>
+<view class="bg-white text-center" bindtap="onToProcess" style="height:80rpx;position:relative;">
+	<text class=" bg-white " style="margin-left:3%" >申请追踪</text>
 </view>
 
 <view class="shadow-margin"></view>
