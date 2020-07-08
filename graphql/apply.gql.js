@@ -53,6 +53,7 @@ query ($userId: Int!) {
    id,
    created_at,
     state,
+    is_deleted,
   }
 }
 `

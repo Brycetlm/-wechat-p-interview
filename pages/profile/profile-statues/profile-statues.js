@@ -15,33 +15,13 @@ Page({
     deleteid:null,
   },
 
-  // setConfirm:function()
-  // {
-  //   this.setData({
-  //     confirm:this.options.confirm
-  //   })
-  // },
-
-  // rollBack:function(options)
-  // {
-  //   this.setData({
-  //     showView:options.showView
-  //   })
-    
-  // },
+ 
 //获取简历信息并显示
 //用户申请数据
 getResumeId: async function (id) {
-  let data = await resumeService.getResumeInfoByUserId(id); //调试时使用默认参数1
+  let data = await resumeService.getResumeInfoByUserId(id); 
   let result=data.getResumeInfoByUserId;
-  // for(var i=0;i<result.length;i++)
-  // {
-  //   if(result[i].is_deleted==1)
-  //   {
-  //     result.splice(i,1);
-  //   }
-  // }
- 
+  
   console.log(result);
   
   this.setData({
@@ -72,7 +52,7 @@ deleteResume:async function(e)
   this.setData({
     modalName: null
   })
-  console.log(e.currentTarget.dataset.reid);
+  //console.log(e.currentTarget.dataset.reid);
   await resumeService.deleteResume(this.data.deleteid);
   this.onLoad(this.options);
 },
@@ -89,10 +69,7 @@ hideModal(e) {
   })
 },
 confirmResume: async function(e) {
-  //console.log(this.data.name, this.data.arrayPay[this.data.indexPay], this.data.arrayWork[this.data.indexWork], this.data.arrayPermission[this.data.indexPermission], this.data.region[0], this.data.region[1], this.data.region[2])
-  //console.log(this.options.id);
-  // console.log("resumeid");
-  // console.log(e);
+ 
   this.setData({
     resumeId:e.currentTarget.dataset.reid,
   })
@@ -113,10 +90,6 @@ confirmResume: async function(e) {
     this.setData({
       showView:+options.showView,
     })
-    console.log(options);
-    console.log(this.data.showView);
-    // var app=getApp();
-    // console.log(app.globalData.showBnt);
     this.getResumeId(1);
   },
 

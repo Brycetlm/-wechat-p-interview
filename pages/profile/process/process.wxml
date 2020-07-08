@@ -4,12 +4,14 @@
 
 
 
-<view wx:for="{{applyList}}" style="height:300rpx">
+<view wx:for="{{applyList}}" style="height:300rpx" wx:if="{{!item.is_deleted}}">
 
 <view class="bg-white padding">
-<text>简历名</text>
- <view class="action" data-state="{{item.state}}" data-applyid="{{item.id}}" bindtap="setStatue">
+<text>简历{{item.id}}</text>
+ <view class="action"  data-applyid="{{item.id}}" bindtap="deleteApply">
+    <view data-state="{{item.state}}" bindtap="setStatue">
     <button style="z-index:2;position:absolute;margin-top:160rpx;margin-left:65%;width:180rpx" class="cu-btn bg-blue shadow" bindtap="showModal" data-target="Modal">撤销申请</button>
+  </view>
   </view>
 	<view class="cu-modal {{modalName=='Modal'?'show':''}}">
   <view class="cu-dialog">
@@ -24,8 +26,23 @@
   </view>
 </view>
 	<!-- <button class="cu-btn bg-blue" bindtap="withDraw" style="z-index:2;position:absolute;margin-top:200rpx;margin-left:50rpx;width:200rpx" >撤回简历</button> -->
-  <view class="cu-steps">
-    <view class="cu-item {{index-1>basics?'':'text-red'}}" wx:for="{{basicsList}}" wx:key>
+  <view wx:if="{{item.state=='ACCEPT'}}" class="cu-steps">
+    <view class="cu-item {{index-2>basics?'':'text-green'}}" wx:for="{{basicsList_accept}}" wx:key>
+      <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+    </view>
+  </view>
+  <view wx:elif="{{item.state=='POST'}}" class="cu-steps">
+    <view class="cu-item {{index>basics?'':'text-blue'}}" wx:for="{{basicsList}}" wx:key>
+      <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+    </view>
+  </view>
+  <view wx:elif="{{item.state=='REVISION'}}" class="cu-steps">
+    <view class="cu-item {{index-1>basics?'':'text-blue'}}" wx:for="{{basicsList}}" wx:key>
+      <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
+    </view>
+  </view>
+  <view wx:else class="cu-steps">
+    <view class="cu-item {{(index-2)>basics?'':'text-red'}}" wx:for="{{basicsList}}" wx:key>
       <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
     </view>
   </view>
