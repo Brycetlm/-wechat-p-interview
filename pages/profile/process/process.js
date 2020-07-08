@@ -8,21 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  //   basicsList: [{
-  //     icon: 'usefullfill',
-  //     name: '已投递'
-  //   }, {
-  //     icon: 'radioboxfill',
-  //     name: '审核中'
-  //   }, {
-  //     icon: 'roundclosefill',
-  //     name: '未通过'
-  //   },
-  //   {
-  //     icon: 'roundcheckfill',
-  //     name: '通过'
-  //   },  
-  //  ],
+  
   basicsList:null,
   applyList:null,
   basics: 0,  //-1 已投递
@@ -30,29 +16,15 @@ Page({
   withDraw:null,
   },
 
-  // basicsSteps() {
-  //   this.setData({
-  //     basics: this.data.basics == this.data.basicsList.length - 1 ? 0 : this.data.basics + 1
-  //   })
-  // },
+  
+  
 
   
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
-    if(this.data.applyList[0].state!="POST")
-    {
-      this.setData({
-        withDraw:"撤销失败，已开始审核"
-      })
-    }
-    else {
-      applyService.deleteApply(1);  //给的测试applyid 1
-      this.setData({
-        withDraw:"撤销成功！"
-      })
-    }
+    
   },
   hideModal(e) {
     this.setData({
@@ -60,6 +32,23 @@ Page({
     })
   },
   
+  setStatue:async function(e)
+  {
+    let state=e.currentTarget.dataset.state;
+    console.log(e.currentTarget.dataset.state);
+    if(state!="POST")
+    {
+      this.setData({
+        withDraw:"撤销失败，已开始审核或审核完成"
+      })
+    }
+    else {
+      applyService.deleteApply(e.currentTarget.dataset.applyid);  //给的测试applyid 1
+      this.setData({
+        withDraw:"撤销成功！"
+      })
+    }
+  },
 
 //申请状态获取
 getApplyInfoByUserId: async function (id) {
@@ -75,17 +64,12 @@ loadApplyList: async function (id) {
     applyList: result
   })
   // console.log("applyList");
-  // console.log(this.data.applyList);
+  console.log(this.data.applyList);
 },
 
 changeResult()
   {
     
-    //
-    // console.log("test");
-    // console.log(this.data.applyList);
-    // console.log((this.data.applyList[0].id));
-    //if(this.data.applyList[0].id==1)
     this.setData(
       {
         basicsList:[{
@@ -103,11 +87,7 @@ changeResult()
       }
     )
     
-    // console.log("name");
-    // console.log(this.data.applyList);
-    // console.log(this.data.applyList.name);
-    // console.log(this.data.basicsList);
-    // console.log(this.data.basicsList[0].name);
+   
   },
 
   
@@ -115,6 +95,7 @@ changeResult()
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     this.loadApplyList(1);     //这里有个注意点就是要把这个函数放在onload里，不能放在onread不然就会导致后面获取不到数据
   },
 

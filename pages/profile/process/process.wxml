@@ -4,16 +4,16 @@
 
 
 
+<view wx:for="{{applyList}}" style="height:300rpx">
 
 <view class="bg-white padding">
 <text>简历名</text>
- <view class="action">
-    <button style="z-index:2;position:absolute;margin-top:200rpx;margin-left:50rpx;width:200rpx" class="cu-btn bg-blue shadow" bindtap="showModal" data-target="Modal">撤销申请</button>
+ <view class="action" data-state="{{item.state}}" data-applyid="{{item.id}}" bindtap="setStatue">
+    <button style="z-index:2;position:absolute;margin-top:160rpx;margin-left:65%;width:180rpx" class="cu-btn bg-blue shadow" bindtap="showModal" data-target="Modal">撤销申请</button>
   </view>
 	<view class="cu-modal {{modalName=='Modal'?'show':''}}">
   <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">撤销申请</view>
+    <view class="cu-bar bg-white " >
       <view class="action" bindtap="hideModal">
         <text class="cuIcon-close text-red"></text>
       </view>
@@ -29,6 +29,7 @@
       <text class="cuIcon-{{item.icon}}"></text> {{item.name}}
     </view>
   </view>
+</view>
 </view>
 <!-- <view class="bg-white padding margin-top-xs">
 

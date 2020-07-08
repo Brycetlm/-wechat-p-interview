@@ -47,8 +47,25 @@ loadApplyList: async function (id) {
   this.setData({
     applyList: result
   })
-  //console.log("applyList");
-  //console.log(this.data.applyList);
+  
+},
+
+
+loadApplyList: async function (id) {
+  const result = await this.getApplyInfoByUserId(1);   //调试时使用默认参数1  在onready中调用
+  console.log(result);
+
+  for(var i=0;i<result.length;i++)
+  {
+    if(result[i].state=="ACCEPT"){result[i].state="已通过";}
+    if(result[i].state=="POST"){result[i].state="已投递";}
+    if(result[i].state=="REJECT"){result[i].state="已拒绝";}
+    if(result[i].state=="REVISION"){result[i].state="审核中";}
+  }
+  this.setData({
+    applyList: result
+  })
+  
 },
 
 // changeStatue: function (e) {
