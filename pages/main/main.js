@@ -16,18 +16,18 @@ Page({
     swiperList: [{
       id: 0,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+      url:'http://jyhelper.com/wp-content/uploads/2016/11/af.jpg'
     }, {
       id: 1,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
+      url: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2001322426,506825411&fm=26&gp=0.jpg',
     }, {
       id: 2,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+      url: 'http://upload.gongkong.com/Upload/gongkong/baiduEditorImage/201809/04/8fc56bd6c6fd4f5487420c0787337cee_w.jpg'
     }],
     jobsList: null,
-    name: '孙剑桥',
+    name: 'loading...',
   },
 
   /**
@@ -43,6 +43,23 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: async function () {
+
+
+    try {
+      let url = await updateService.getAvatar('sa');
+      let name = await updateService.getName('sa');
+      console.log(url);
+      console.log(name);
+      //console.log("main:",url);
+      this.setData({
+        img: url,
+        name: name,
+      })
+    } catch (e) {
+      console.log('exception!:', e)
+    }
+
+
     var positionNumber=10;   //对比position的数量
 
     //规范position查询数量，以免超过数据库position数量
@@ -60,13 +77,32 @@ Page({
       
       //console.log(recommendService.match(count));
       var temp=await recommendService.match(count);
+      
+
       if(temp!=0)
       {
+
+        //console.log(temp);
+        let companyInfo=await companyService.getCompanyInfoById(temp[0].company_id);
+        companyInfo=companyInfo.getCompanyInfoById;
+        //console.log(companyInfo);
+        let url = companyInfo.logo_url;
+       
+        //console.log("main:",url);
+        // this.setData({
+
+        //   name: temp[0].company_name,
+        // })
+        //console.log(url);
+
+
       //console.log(temp);
       jobsInfo.push({
+        logo_url:url,
+        id:count,
         ...temp[0]
       })
-      //console.log(jobsInfo);
+      console.log(jobsInfo);
       showCount=showCount+1;
        }
        this.setData({
@@ -79,19 +115,9 @@ Page({
     {
       this.loadDefaultJobsList();
     }
-    try {
-      
-      let url = await updateService.getAvatar('sa');
-      let name = await updateService.getName('sa');
-      //console.log("main:",url);
-      this.setData({
-        img: url,
-        name: name,
-      })
-    } catch (e) {
-      console.log('exception!:', e)
-    }
 
+
+  
   },
 
   /**

@@ -39,6 +39,7 @@ Page({
   scroll: 0,
   withDraw:null,
   state:null,
+ 
   },
 
   
@@ -74,23 +75,23 @@ Page({
       })
     }
     else {
-      applyService.deleteApply(deletid);  
+      await applyService.deleteApply(deletid);  
+      console.log(deletid);
       this.setData({
         withDraw:"撤销成功！"
       })
+      
       this.onLoad(this.options);
+      console.log(this.data.applyList);
     }
   },
 
-//申请状态获取
-getApplyInfoByUserId: async function (id) {
-  let data = await applyService.getApplyInfoByUserId(id); //调试时使用默认参数1
-  let result=data.getApplyInfoByUserId;
-  return result;
-},
+ 
 
 loadApplyList: async function (id) {
-  const result = await this.getApplyInfoByUserId(1); //调试时使用默认参数1  在onready中调用
+  let data = await applyService.getApplyInfoByUserId(id); //调试时使用默认参数1
+  let result=data.getApplyInfoByUserId;
+  
   //console.log(result);
   this.setData({
     applyList: result
@@ -99,77 +100,6 @@ loadApplyList: async function (id) {
   console.log(this.data.applyList);
 },
 
-changeResult()
-  {
-    console.log(this.data.applyList);
-    let list=this.data.applyList;
-    for(var i=0;i<list.length;i++)
-    {
-      console.log(list[i].state);
-    if(list[i].state=="ACCEPT") //已通过审核
-    {
-    this.setData(
-      {
-        basicsList:[{
-          icon: 'usefullfill',
-          name: '已投递'
-        }, {
-          icon: 'radioboxfill',
-          name: '审核中'
-        }, 
-        {
-          icon: 'roundcheckfill',
-          name: '通过'
-        }
-        ],
-        basics:1,
-      }
-      
-    )
-    }
-    if(list[i].state=="POST") //已投递
-    {
-    this.setData(
-      {
-        
-        basics:-1,
-      }
-      
-    )
-    }
-    if(list[i].state=="REJECT") //已拒绝
-    {
-    this.setData(
-      {
-        basicsList:[{
-          icon: 'usefullfill',
-          name: '已投递'
-        }, {
-          icon: 'radioboxfill',
-          name: '审核中'
-        }, 
-        {
-          icon: 'roundcheckfill',
-          name: '拒绝'
-        }
-        ],
-        basics:1,
-      }
-      
-    )
-    }
-    if(list[i].state=="REVISION") //审核中
-    {
-    this.setData(
-      {
-        basics:0,
-      }
-      
-    )
-    }
-  }
-   
-  },
 
   
   /**
@@ -177,7 +107,8 @@ changeResult()
    */
   onLoad: function (options) {
 
-    this.loadApplyList(1);     //这里有个注意点就是要把这个函数放在onload里，不能放在onread不然就会导致后面获取不到数据
+    
+    this.loadApplyList(1);     //这里有个注意点就是要把这个函数放在onload里，不能放在onready不然就会导致后面获取不到数据
     //this.changeResult();
   },
 

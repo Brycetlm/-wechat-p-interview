@@ -67,7 +67,7 @@ const match= async function (positionId) {
     let salary=await positionService.getPositionById(positionId);
     salary=salary.getPositionById;
     //console.log("salary");
-    //console.log(salary);
+    console.log(salary);
     let average_salary=(salary.salary_min+salary.salary_max)/2;
     var salary_loss=expectSalary-average_salary;    //期望工资与职位给出的工资只差，为正就loss越大，难以接受
     //console.log(salary_loss)
@@ -103,6 +103,7 @@ const match= async function (positionId) {
     var judge=regionJudge*0.3+salaryJudge*0.7;  //最终评分
     //console.log(judge);
     let recommendJob=[];
+    console.log(salary);
     recommendJob.push({
        
 
@@ -112,6 +113,8 @@ const match= async function (positionId) {
         city: region[0].city,
         region: region[0].region,
         updated_at: salary.created_at,
+        company_id:salary.company_id,
+       
         
     })
     console.log(judge);

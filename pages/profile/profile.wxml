@@ -36,7 +36,7 @@
 </view>
 
 <!-- 申请详情 -->
-<view class="apply-bg" wx:for="{{applyList}}" style="position:relative">
+<view class="apply-bg" wx:for="{{applyList}}" style="position:relative" wx:if="{{(!item.is_deleted)}}">
 	<!-- <view class="shadow-margin bg-white"style="width:100%;height:30rpx;position:relative"></view> -->
 	<view class="shadow-margin"style="width:100%;height:6rpx;position:relative"></view>
 	<view class="bg-white" style="width:100%;height:120rpx;position:absolute;margin-top:60rpx" >
