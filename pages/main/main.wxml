@@ -46,6 +46,8 @@
 </view>
 
 
+<view style="position:relative;margin-bottom:100rpx;width:100%;height:30rpx"></view>
+
 <view class="cu-bar foot tabber bg-white">
 	<view class="action text-blue" bindtap="bindTapHome">
 		<view class="cuIcon-homefill"></view> 首页
